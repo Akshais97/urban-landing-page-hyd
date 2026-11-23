@@ -1,0 +1,235 @@
+@font-face {
+  font-family: Cormorant;
+  src: url('/fonts/cormorant-500.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Manrope;
+  src: url('/fonts/manrope-500.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  --paper: #f4f2e7;
+  --ink: #153c33;
+  --ink-muted: #3e584e;
+  --rule: #b8c0a8;
+  --display: Cormorant, Georgia, serif;
+  --body: Manrope, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--body);
+  font-weight: 500;
+  font-synthesis: style;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+h2, h3, p, figure { margin: 0; }
+button { font: inherit; color: inherit; }
+img, video { display: block; }
+
+.preview-header {
+  position: fixed;
+  z-index: 5;
+  inset: 22px clamp(20px, 3vw, 48px) auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+.preview-header > * { pointer-events: auto; }
+.preview-brand, .preview-playback {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid #244f4226;
+  border-radius: 2px;
+  background: var(--paper);
+}
+.preview-brand {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+}
+.preview-playback { gap: 9px; font-size: 12px; cursor: pointer; }
+.pause-icon { width: 8px; height: 10px; border-inline: 2px solid currentColor; }
+.play-icon { border: solid transparent; border-width: 5px 0 5px 8px; border-left-color: currentColor; }
+.preview-footer {
+  display: grid;
+  place-items: center;
+  padding: 25px 20px;
+  min-height: 120px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.preview-footer a { text-underline-offset: 4px; font-size: 13px; }
+.preview-footer a:focus-visible { outline-color: var(--paper); }
+
+.garden-story { position: relative; background: var(--paper); overflow: clip; }
+.garden-story__viewport { position: relative; overflow: clip; }
+.garden-story__track { display: flex; flex-direction: column; }
+.garden-panel { isolation: isolate; position: relative; width: 100%; }
+.garden-kicker { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.22em; }
+.garden-reveal { display: block; overflow: hidden; }
+.garden-reveal__inner { display: block; }
+
+.garden-flower {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: min(96vw, 42rem);
+  aspect-ratio: 1;
+}
+.garden-flower video { width: 100%; height: 100%; object-fit: contain; }
+.garden-flower--intro { top: -7vw; left: -11vw; }
+.garden-flower--terrace { bottom: -3vw; left: -21vw; }
+.garden-flower--terrace video { transform: rotate(180deg); }
+
+.garden-intro {
+  min-height: max(600px, 77svh);
+  display: grid;
+  padding: min(43vw, 220px) 24px 60px;
+  text-align: center;
+}
+.garden-intro__copy { display: grid; align-content: space-between; justify-items: center; gap: 42px; }
+.garden-intro__lead { display: grid; gap: 16px; justify-items: center; }
+.garden-intro__statement {
+  max-width: min(13ch, 100%);
+  padding-block-end: 0.07em;
+  font: 500 clamp(48px, 10vw, 82px)/0.96 var(--display);
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+.garden-intro__description { max-width: 29ch; font-size: 14px; line-height: 1.65; text-wrap: pretty; }
+.garden-intro__scroll { display: none; }
+
+.garden-terrace {
+  display: grid;
+  justify-items: end;
+  align-content: start;
+  padding: 60px 24px clamp(120px, 42vw, 320px);
+}
+.garden-terrace__brand { justify-self: start; margin-block-end: 10px; }
+.garden-terrace__title {
+  position: relative;
+  z-index: 2;
+  font: 500 clamp(72px, 17vw, 150px)/0.77 var(--display);
+  letter-spacing: -0.068em;
+  text-align: right;
+}
+.garden-terrace__title > span { display: block; }
+.garden-terrace__title .garden-reveal { padding: 0.09em 0.08em 0.14em 0.02em; margin-block: -0.05em; }
+.garden-terrace__title > span:nth-child(2) { margin-inline-end: 0.42em; }
+.garden-terrace__image {
+  width: min(76vw, 480px);
+  aspect-ratio: 3/4;
+  margin-block: 20px;
+  overflow: hidden;
+}
+.garden-terrace__image img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+.garden-terrace__caption { width: min(76vw, 480px); }
+.garden-terrace__caption h3 { font: 500 clamp(28px, 4vw, 40px)/1.08 var(--display); margin-bottom: 8px; }
+.garden-terrace__caption p { font-size: 13px; line-height: 1.65; color: var(--ink-muted); }
+.garden-terrace__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  min-width: 120px;
+  min-height: 44px;
+  margin-block-start: 18px;
+  text-underline-offset: 4px;
+  font-size: 12px;
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  .garden-story__viewport { position: sticky; top: 0; height: 100svh; min-height: 570px; }
+  .garden-story__track { width: max-content; height: 100%; flex-direction: row; padding-inline: 3vw; }
+  .garden-panel { flex: 0 0 auto; width: 94vw; height: 100%; }
+  .garden-flower { width: 50vw; }
+  .garden-flower--intro { top: -6vw; left: -7vw; }
+  .garden-flower--terrace { bottom: -9vw; left: -14vw; }
+  .garden-flower--terrace video { transform: rotate(90deg); }
+
+  .garden-intro { min-height: 0; padding: 0; }
+  .garden-intro__copy {
+    padding: 35svh 9vw 14svh;
+    gap: 28px;
+    align-content: space-between;
+  }
+  .garden-intro__lead { gap: 20px; }
+  .garden-intro__statement { max-width: 16ch; font-size: clamp(58px, 6.5vw, 110px); }
+  .garden-intro__scroll {
+    position: absolute;
+    display: inline-flex;
+    gap: 9px;
+    align-items: center;
+    justify-self: center;
+    bottom: 5%;
+    font-size: 10px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .garden-intro__scroll i { width: 25px; height: 1px; background: currentColor; }
+
+  .garden-terrace { display: block; padding: 0; }
+  .garden-terrace__brand { position: absolute; top: 17%; left: 6vw; }
+  .garden-terrace__title {
+    position: absolute;
+    top: 24%;
+    left: 6vw;
+    width: 30vw;
+    font-size: min(10.5vw, 180px, 22svh);
+    text-align: left;
+  }
+  .garden-terrace__title > span:nth-child(2) { margin-inline: 0.35em 0; }
+  .garden-terrace__title > span:nth-child(3) { margin-inline-start: 0.1em; }
+  .garden-terrace__title .garden-reveal { padding-bottom: 0.21em; margin-bottom: -0.12em; }
+  .garden-terrace__image {
+    position: absolute;
+    left: 36vw;
+    top: 4.8%;
+    width: 35vw;
+    height: 90.4%;
+    margin: 0;
+    aspect-ratio: auto;
+    z-index: 1;
+  }
+  .garden-terrace__caption { position: absolute; left: 73vw; bottom: 5%; width: 20vw; }
+  .garden-terrace__link {
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    top: 42%;
+    left: 73vw;
+    width: clamp(105px, 10vw, 145px);
+    min-width: 0;
+    aspect-ratio: 1;
+    margin: 0;
+    border: 1px solid var(--rule);
+    border-radius: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-size: 10px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .garden-terrace__link span:first-child { max-width: 9ch; }
+  .garden-terrace__link span:last-child { font-size: 15px; }
+  .garden-terrace__link:hover { background: var(--ink); color: var(--paper); }
+}
+
+@media (min-width: 680px) and (max-width: 991px), (min-width: 680px) and (prefers-reduced-motion: reduce) {
+  .garden-intro { min-height: 670px; }
+  .garden-terrace { padding-inline: 9vw; }
+  .garden-terrace__brand { margin-inline-start: 9vw; }
+}

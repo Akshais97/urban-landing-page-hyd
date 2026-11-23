@@ -1,0 +1,86 @@
+.image-break {
+  --cloud-height: 37.5vw;
+  --cloud-offset: -6vw;
+  --cloud-fade: 20vw;
+  position: relative;
+  min-height: 100svh;
+  overflow: clip;
+  background: #829a9e;
+}
+
+.image-break__parallax,
+.image-break__clouds {
+  position: absolute;
+  inset: 0;
+}
+
+.image-break__frame {
+  position: absolute;
+  inset: -15% 0;
+  transform-origin: center bottom;
+}
+
+.image-break__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-break__clouds {
+  pointer-events: none;
+}
+
+.image-break__clouds::after {
+  content: '';
+  position: absolute;
+  inset: -1px 0 auto;
+  height: var(--cloud-fade);
+  background-image: linear-gradient(var(--paper), transparent), linear-gradient(var(--paper), transparent);
+}
+
+.image-break__layer {
+  position: absolute;
+  inset: var(--cloud-offset) 0 auto;
+}
+
+.image-break__track {
+  display: flex;
+  width: max-content;
+}
+
+.image-break__track img {
+  flex: none;
+  width: auto;
+  height: calc(var(--cloud-height) * 0.8);
+}
+
+.image-break__layer:first-child img {
+  height: var(--cloud-height);
+}
+
+.image-break__track img:nth-child(even) {
+  transform: scaleY(-1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .image-break__track {
+    animation: cloud-drift 32s linear infinite paused;
+  }
+
+  .image-break__clouds[data-drifting='true'] .image-break__track {
+    animation-play-state: running;
+  }
+}
+
+/* Advance by one mirrored pair. The extra repeat covers the viewport at the seam. */
+@keyframes cloud-drift {
+  to { transform: translateX(calc(-100% / 3)); }
+}
+
+@media (max-width: 991px) {
+  .image-break {
+    --cloud-height: 72.1154vw;
+    --cloud-offset: -15.3846vw;
+    --cloud-fade: 42.3077vw;
+  }
+}
