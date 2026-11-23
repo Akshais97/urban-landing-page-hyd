@@ -114,9 +114,7 @@
   top: calc(100% + 0.65rem);
   right: var(--hero-gutter);
   width: min(21rem, calc(100% - 2 * var(--hero-gutter)));
-  max-height: min(70svh, 32rem);
-  overflow: auto;
-  overscroll-behavior: contain;
+  overflow: clip;
   color: var(--color-brown-ink);
   background: var(--color-paper-white);
   box-shadow: 0 16px 50px rgb(44 36 26 / 26%);
@@ -137,6 +135,30 @@
   font-weight: 700;
 }
 .abundance-hero .header-menu :is(a:hover, .menu-access) { color: var(--color-gold-ink); }
+
+@media (max-height: 610px) {
+  .abundance-hero .header-menu {
+    --menu-columns: 2;
+    width: min(30rem, calc(100% - var(--hero-gutter) - 0.75rem));
+    padding: 0.5rem clamp(0.65rem, 3vw, 1rem);
+  }
+  .abundance-hero .header-menu > .c {
+    display: grid;
+    grid-template-columns: repeat(var(--menu-columns), minmax(0, 1fr));
+    column-gap: clamp(0.5rem, 2.5vw, 1.125rem);
+  }
+  .abundance-hero .header-menu > .c > :is(a, button) {
+    min-width: 0;
+    min-height: 44px;
+    padding-block: 0.3rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-height: 410px) and (min-width: 600px) {
+  .abundance-hero .header-menu { --menu-columns: 3; }
+  .abundance-hero .header-menu .menu-access { grid-column: 1 / -1; }
+}
 
 .abundance-copy {
   position: relative;
@@ -243,6 +265,9 @@
   pointer-events: none;
 }
 .hero-opening .abundance-opening { visibility: visible; }
+.hero-opening .abundance-hero :is(.topbar, .abundance-title-line > span, .abundance-project, .abundance-actions, .abundance-scroll) {
+  opacity: 0;
+}
 .abundance-paper {
   position: absolute;
   inset-block: 0;

@@ -55,8 +55,8 @@
       .to(papers[1], { xPercent: 108, duration: 0.98, ease: "power3.inOut" }, 0.05)
       .fromTo(hero.querySelector(".topbar"), { opacity: 0 },
         { opacity: 1, duration: 0.46, ease: "power2.out" }, 0.37)
-      .fromTo(titleLines, { yPercent: 110 },
-        { yPercent: 0, duration: 0.72, stagger: 0.075, ease: "power3.out" }, 0.37)
+      .fromTo(titleLines, { yPercent: 110, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 0.72, stagger: 0.075, ease: "power3.out" }, 0.37)
       .fromTo(hero.querySelectorAll(".abundance-project, .abundance-actions, .abundance-scroll"),
         { y: 12, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.075, duration: 0.60, ease: "power2.out" }, 0.45);
 
