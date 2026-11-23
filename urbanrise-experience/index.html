@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#e8d9b6">
   <meta name="description" content="Discover The Lifescape by Urbanrise, from the landscaped terraces of The Living Wave to the spaces that bring the community together.">
   <title>The Lifescape | Urbanrise</title>
+  <link rel="icon" type="image/png" href="%BASE_URL%logo.png">
   <link rel="stylesheet" href="/src/styles.css">
   <script>
     (() => {
@@ -27,7 +28,7 @@
   <svg width="0" height="0" class="experience-icons" aria-hidden="true">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-5-5 5 5-5 5"/></symbol>
   </svg>
-  <div class="experience-hero" id="home">
+  <div class="experience-hero" id="home" tabindex="-1">
   <header class="hero abundance-hero" data-scene-root aria-labelledby="hero-title">
     <div class="bg abundance-scene" aria-hidden="true">
       <div class="abundance-layer">
@@ -47,7 +48,7 @@
     <div class="abundance-scrim abundance-scrim--front" aria-hidden="true"></div>
 
     <div class="topbar">
-      <a class="abundance-wordmark lg" href="#home" aria-label="Urbanrise home" data-lg='{"scale":16,"depth":11}'>
+      <a class="abundance-wordmark lg" href="#home" aria-label="Urbanrise home" data-lg='{"scale":10,"depth":11,"chroma":0}'>
         <span class="c"><img src="%BASE_URL%hero/urbanrise-wordmark.webp" alt="" width="384" height="70"></span>
       </a>
       <nav class="navpill lg" aria-label="Primary" data-lg='{"scale":25,"depth":14}'>
@@ -58,7 +59,8 @@
           <a href="#gallery">Gallery</a>
           <a href="#release">Abundance</a>
           <a href="#benchmarks">Benchmarks</a>
-          <a href="../../index.html#residences">Residences</a>
+          <a href="#lineup">Residences</a>
+          <a href="#carbon-calculator">Calculator</a>
         </div>
       </nav>
       <button class="iconbtn lg menu-toggle" id="menuToggle" type="button"
@@ -74,8 +76,11 @@
           <a href="#gallery">Gallery</a>
           <a href="#release">Abundance</a>
           <a href="#benchmarks">Benchmarks</a>
-          <a href="../../index.html#residences">Explore Residences</a>
-          <a class="menu-access" href="../../index.html#access">Register Interest
+          <a href="#version">Home check</a>
+          <a href="#lineup">Explore Residences</a>
+          <a href="#carbon-calculator">Calculator</a>
+          <a href="#vision">The story of Abundance</a>
+          <a class="menu-access" href="#access">Register Interest
             <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
         </div>
@@ -90,10 +95,10 @@
           <span class="abundance-title-line"><span>Abundance</span></span>
         </h1>
         <div class="abundance-actions">
-          <a class="abundance-action lg" href="../../index.html#access" data-lg='{"scale":24,"depth":13}'>
+          <a class="abundance-action lg" href="#access" data-lg='{"scale":24,"depth":13}'>
             <span class="c">Register Interest <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </a>
-          <a class="abundance-link lg" href="../../index.html#residences" data-lg='{"scale":18,"depth":12}'>
+          <a class="abundance-link lg" href="#lineup" data-lg='{"scale":18,"depth":12}'>
             <span class="c">Explore Residences</span>
           </a>
         </div>
@@ -109,6 +114,7 @@
   </header>
   </div>
   <main id="experience" data-gallery-theme="champagne-gold"></main>
+  <!-- CUSTOM_FOOTER -->
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

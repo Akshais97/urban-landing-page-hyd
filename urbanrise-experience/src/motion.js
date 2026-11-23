@@ -43,7 +43,7 @@ export function useExperienceMotion(living, gallery) {
 
   useEffect(() => {
     const hash = location.hash;
-    const ids = [living.current.id, gallery.current.id, 'release', 'benchmarks'];
+    const ids = [living.current.id, gallery.current.id, 'release', 'benchmarks', 'version', 'lineup', 'carbon-calculator', 'vision', 'access', 'footer'];
     const id = hash.slice(1);
     const target = ids.includes(id) ? document.getElementById(id) : null;
     if (!target) return;

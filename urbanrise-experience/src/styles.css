@@ -3,9 +3,14 @@
 @import './hero-shell.css';
 @import '../../assets/hero/hero.css';
 @import './glass.css';
+@import '../../assets/closing/closing.css';
 
 html { scroll-padding-top: env(safe-area-inset-top, 0px); }
 body { margin: 0; }
+.ur-finale {
+  --ur-closing-gutter: clamp(1.25rem, 4.45vw, 5rem);
+  font: 400 16px/1.5 var(--font-body);
+}
 .experience-icons { position: absolute; }
 #experience {
   --experience-gallery-paper: var(--color-champagne-paper);

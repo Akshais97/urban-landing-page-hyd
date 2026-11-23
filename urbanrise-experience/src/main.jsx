@@ -6,10 +6,14 @@ import ImageBreak from '../../era-flowers-preview/src/ImageBreak.jsx';
 import Gallery from '../../sobha-gallery-preview/src/Gallery.jsx';
 import AbundanceFeatures from './AbundanceFeatures.jsx';
 import Benchmarks from './Benchmarks.jsx';
+import CarbonCalculator from './CarbonCalculator.jsx';
+import HomeQuestionnaire from './HomeQuestionnaire.jsx';
+import ResidenceSelection from './ResidenceSelection.jsx';
 import { useExperienceMotion } from './motion.js';
 import { observeControlGlass } from './control-glass.js';
+import '../../assets/closing/closing.js';
+import './followup-sections.css';
 
-const homepage = '../../index.html';
 const township = {
   src: import.meta.env.BASE_URL + 'project/golden-hour-villa-township.webp',
   alt: 'Aerial view of a villa township with landscaped gardens and tree-lined roads.',
@@ -44,7 +48,7 @@ function LivingWave({ section }) {
           </button>
         </div>
       )}
-      <FlowerSequence flowersPaused={paused} homesUrl={homepage + '#lineup'} />
+      <FlowerSequence flowersPaused={paused} homesUrl="#lineup" />
       <div className="experience-township">
         <ImageBreak image={township} paused={paused} />
         <div className="experience-township-light" aria-hidden="true" />
@@ -69,6 +73,10 @@ function Experience() {
       </div>
       <AbundanceFeatures />
       <Benchmarks />
+      <HomeQuestionnaire />
+      <ResidenceSelection>
+        <CarbonCalculator />
+      </ResidenceSelection>
     </MotionConfig>
   );
 }
