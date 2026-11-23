@@ -5,6 +5,13 @@ import FlowerSequence from './FlowerSequence.jsx';
 import ImageBreak from './ImageBreak.jsx';
 import './styles.css';
 
+const townshipImage = {
+  src: import.meta.env.BASE_URL + 'project/golden-hour-villa-township.webp',
+  alt: 'Aerial view of a villa township with landscaped gardens and tree-lined roads.',
+  width: 1672,
+  height: 941,
+};
+
 function Preview() {
   const [animationPaused, setAnimationPaused] = useState(false);
   const reducedMotion = useReducedMotion();
@@ -28,7 +35,7 @@ function Preview() {
       </header>
       <main>
         <FlowerSequence flowersPaused={animationPaused} homesUrl={homeUrl + '#lineup'} />
-        <ImageBreak paused={animationPaused} />
+        <ImageBreak image={townshipImage} paused={animationPaused} />
       </main>
       <footer className="preview-footer">
         <a href={homeUrl}>Back to Urbanrise <span aria-hidden="true">↗</span></a>

@@ -1,0 +1,168 @@
+#home,
+#experience {
+  --glass-fill: rgb(252 249 242 / 17%);
+  --glass-hover-fill: rgb(252 249 242 / 29%);
+  --glass-ink: var(--color-brown-ink);
+  --glass-rim: rgb(111 74 31 / 26%);
+  --glass-coat: linear-gradient(180deg, rgb(255 255 255 / 24%), transparent 41%, rgb(252 249 242 / 9%));
+  --glass-shadow:
+    inset 0 0 0 1px var(--glass-rim),
+    inset 0 1px 1px rgb(255 255 255 / 76%),
+    inset 0 -1px 2px rgb(111 74 31 / 19%),
+    0 3px 12px rgb(44 36 26 / 10%);
+}
+
+#home .lg,
+#home .menu-access,
+#experience :is(.preview-playback, .garden-terrace__link, .gallery-arrow, .gallery-view, .gallery-brand, .gallery-dialog figcaption, .gallery-grid button) {
+  color: var(--glass-ink);
+  border: 0;
+  border-radius: 999px;
+  background: var(--glass-coat), var(--glass-fill);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(3px) saturate(1.25);
+  backdrop-filter: blur(3px) saturate(1.25);
+}
+
+#home .lg-on {
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+#home .lg-on > .lqg-glass {
+  background: var(--glass-coat), var(--glass-fill);
+  box-shadow: var(--glass-shadow) !important;
+}
+
+#home :is(.navpill, .menu-toggle) {
+  --glass-fill: rgb(252 249 242 / 16%);
+  --glass-rim: rgb(252 249 242 / 48%);
+}
+
+#home .navthumb {
+  --glass-fill: rgb(252 249 242 / 21%);
+  --glass-rim: rgb(252 249 242 / 65%);
+}
+
+#home .navpill a:is(:hover, [aria-current]) { color: var(--glass-ink); }
+#home .abundance-wordmark.lg { padding: 0.625rem 0.875rem; }
+#home .header-menu {
+  --glass-fill: rgb(248 241 227 / 70%);
+  border-radius: 22px;
+}
+
+#home .header-menu .menu-access {
+  --glass-fill: rgb(166 129 66 / 15%);
+  min-height: 42px;
+  margin-block: 5px;
+  padding-inline: 13px;
+}
+
+#home :is(.abundance-action, .abundance-link, .abundance-scroll) {
+  --glass-ink: var(--color-paper-white);
+  --glass-fill: rgb(38 27 15 / 26%);
+  --glass-hover-fill: rgb(88 64 35 / 29%);
+  --glass-rim: rgb(248 241 227 / 58%);
+  text-decoration: none;
+  text-shadow: 0 1px 3px rgb(31 21 12 / 75%);
+}
+
+#home .abundance-action { --glass-fill: rgb(99 66 31 / 32%); }
+#home .abundance-actions { column-gap: 0.7rem; }
+#home .abundance-actions .lg { padding-inline: clamp(0.7rem, 1.5vw, 1.15rem); }
+#home .abundance-action > .c { display: flex; align-items: center; gap: 0.55rem; }
+
+#experience :is(.preview-playback, .garden-terrace__link) { --glass-ink: var(--color-forest); }
+#experience .preview-playback {
+  --glass-fill: rgb(255 253 248 / 62%);
+  --glass-hover-fill: rgb(255 253 248 / 72%);
+  --glass-rim: rgb(64 62 55 / 24%);
+  --glass-coat: linear-gradient(180deg, rgb(255 255 255 / 48%), transparent 55%, rgb(255 255 255 / 12%));
+}
+
+#experience .preview-playback > .lqg-lens > .lqg-lens-inner {
+  filter: blur(12px) grayscale(1) contrast(0.72);
+}
+
+#experience .garden-terrace__link { padding-inline: 0.85rem; text-decoration: none; }
+#experience .gallery-view {
+  --glass-fill: rgb(166 129 66 / 19%);
+  --glass-hover-fill: rgb(166 129 66 / 28%);
+}
+#experience .gallery-brand { padding-inline: 0.9rem; }
+#experience .gallery-close {
+  --glass-ink: var(--color-paper-white);
+  --glass-fill: rgb(35 27 18 / 40%);
+  --glass-hover-fill: rgb(35 27 18 / 59%);
+  --glass-rim: rgb(248 241 227 / 60%);
+  text-shadow: 0 1px 2px rgb(20 15 9 / 85%);
+}
+#experience .gallery-dialog figure { background: transparent; }
+#experience .gallery-dialog figcaption {
+  --glass-fill: rgb(252 249 242 / 87%);
+  border-radius: 0 0 12px 12px;
+}
+#experience .gallery-grid button {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#experience .gallery-grid-name {
+  --glass-fill: rgb(252 249 242 / 27%);
+  border-radius: 0 0 12px 12px;
+}
+
+#experience .experience-glass {
+  isolation: isolate;
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+#experience .experience-glass--anchor { position: relative; }
+
+#experience .experience-glass > .lqg-lens,
+#experience .experience-glass > .lqg-glass {
+  position: absolute;
+  pointer-events: none;
+}
+
+#experience .experience-glass > .lqg-lens { z-index: -2; }
+#experience .experience-glass > .lqg-glass {
+  inset: 0 auto auto 0;
+  z-index: -1;
+  background: var(--glass-coat), var(--glass-fill);
+  box-shadow: var(--glass-shadow) !important;
+}
+
+#experience .gallery-actions { justify-content: flex-end; }
+
+@media (max-width: 670px) {
+  #home :is(.abundance-action, .abundance-link) {
+    --glass-ink: var(--color-brown-ink);
+    --glass-fill: rgb(252 249 242 / 26%);
+    --glass-hover-fill: rgb(252 249 242 / 43%);
+    --glass-rim: rgb(111 74 31 / 36%);
+    text-shadow: none;
+  }
+  #home .abundance-copy :is(.abundance-action, .abundance-link):focus-visible { color: var(--glass-ink); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #home :is(.menu-toggle, .menu-access, .abundance-actions a, .abundance-scroll):hover,
+  #experience :is(.preview-playback, .garden-terrace__link, .gallery-arrow, .gallery-view, .gallery-brand, .gallery-grid button):not([aria-disabled='true']):hover {
+    --glass-fill: var(--glass-hover-fill);
+  }
+}
+
+@media (forced-colors: active) {
+  #home .lg,
+  #home .menu-access,
+  #experience :is(.preview-playback, .garden-terrace__link, .gallery-arrow, .gallery-view, .gallery-brand, .gallery-grid button) {
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
+}

@@ -90,7 +90,7 @@ img, video { display: block; }
 }
 .garden-flower video { width: 100%; height: 100%; object-fit: contain; }
 .garden-flower--intro { top: -7vw; left: -11vw; }
-.garden-flower--terrace { bottom: -3vw; left: -21vw; }
+.garden-flower--terrace { bottom: -3vw; left: max(-255px, -38vw); }
 .garden-flower--terrace video { transform: rotate(180deg); }
 
 .garden-intro {
@@ -115,7 +115,7 @@ img, video { display: block; }
   display: grid;
   justify-items: end;
   align-content: start;
-  padding: 60px 24px clamp(120px, 42vw, 320px);
+  padding: 60px 24px clamp(40px, 12vw, 88px);
 }
 .garden-terrace__brand { justify-self: start; margin-block-end: 10px; }
 .garden-terrace__title {

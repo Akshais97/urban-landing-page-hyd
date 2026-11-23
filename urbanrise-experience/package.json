@@ -1,0 +1,23 @@
+{
+  "name": "urbanrise-experience",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "node prepare-assets.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "prebuild": "node prepare-assets.mjs",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@gsap/react": "2.1.2",
+    "framer-motion": "14.14.0",
+    "gsap": "3.15.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "vite": "8.3.8"
+  }
+}

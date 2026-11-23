@@ -1,0 +1,165 @@
+@import '../../era-flowers-preview/src/styles.css';
+@import '../../sobha-gallery-preview/src/styles.css';
+@import './hero-shell.css';
+@import '../../assets/hero/hero.css';
+@import './glass.css';
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; }
+.experience-icons { position: absolute; }
+#experience {
+  --experience-gallery-paper: var(--color-champagne-paper);
+  --experience-panorama-hold: 72svh;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  overflow-x: clip;
+  background: var(--paper);
+}
+
+.experience-living {
+  position: relative;
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 14px/1.5 var(--body);
+}
+
+.experience-playback {
+  position: sticky;
+  top: max(22px, env(safe-area-inset-top));
+  z-index: 4;
+  display: flex;
+  justify-content: end;
+  height: 0;
+  margin-inline: clamp(20px, 3vw, 48px);
+  pointer-events: none;
+}
+.experience-playback .preview-playback { align-self: start; pointer-events: auto; }
+.experience-township { position: relative; isolation: isolate; overflow: clip; }
+.experience-township-light { display: none; }
+.experience-gallery { position: relative; z-index: 3; }
+.experience-gallery .gallery-heading h1 { overflow: clip; }
+.experience-gallery .gallery-caption-rule { display: none; }
+.experience-gallery .gallery-bar--image-only { border-bottom: 0; padding-bottom: 0; }
+
+#experience[data-gallery-theme='black'] {
+  --experience-gallery-paper: #000;
+}
+
+#experience[data-gallery-theme='ombre'] {
+  --experience-gallery-paper: #211814;
+  --experience-gallery-backdrop: linear-gradient(152deg, #424b35 0%, #35402d 32%, #302a20 64%, var(--experience-gallery-paper) 100%);
+}
+
+#experience[data-gallery-theme='champagne-gold'] {
+  --experience-gallery-paper: #c8a778;
+  --experience-gallery-backdrop:
+    repeating-linear-gradient(0deg, rgb(98 68 32 / 2%) 0 1px, transparent 1px 4px),
+    linear-gradient(152deg, #faf5ea 0%, #e6d4b7 54%, var(--experience-gallery-paper) 100%);
+}
+
+#experience[data-gallery-theme='champagne-gold'] .experience-gallery {
+  --gallery-canvas: var(--experience-gallery-paper);
+  --gallery-surface: #faf5ea;
+  --gallery-heading: #342619;
+  --gallery-copy: #423424;
+  --gallery-rule: rgb(122 89 48 / 32%);
+  --color-gold-ink: #62421f;
+}
+
+#experience:is([data-gallery-theme='black'], [data-gallery-theme='ombre']) .experience-gallery {
+  --gallery-canvas: var(--experience-gallery-paper);
+  --gallery-surface: #141210;
+  --gallery-heading: var(--color-paper-white);
+  --gallery-copy: #ddd3c3;
+  --gallery-rule: rgb(232 217 182 / 36%);
+  --gallery-action: var(--color-antique-gold-light);
+  --glass-ink: var(--color-paper-white);
+  --glass-fill: rgb(255 255 255 / 9%);
+  --glass-hover-fill: rgb(255 255 255 / 17%);
+  --glass-coat: linear-gradient(180deg, rgb(255 255 255 / 13%), transparent 58%);
+  --glass-shadow: inset 0 0 0 1px rgb(243 232 209 / 27%), inset 0 1px rgb(255 255 255 / 23%);
+  color: var(--gallery-heading);
+  color-scheme: dark;
+}
+
+#experience:is([data-gallery-theme='black'], [data-gallery-theme='ombre'], [data-gallery-theme='champagne-gold'])
+  :is(.gallery-stage, .experience-township-light),
+#experience[data-gallery-theme='champagne-gold'] .garden-story__viewport {
+  background: var(--experience-gallery-backdrop, none) var(--experience-gallery-paper);
+}
+#experience:is([data-gallery-theme='black'], [data-gallery-theme='ombre']) :is(.gallery-prefix, .gallery-gold-text) {
+  color: var(--color-antique-gold-light);
+}
+#experience:is([data-gallery-theme='black'], [data-gallery-theme='ombre']) .experience-gallery :focus-visible {
+  outline-color: var(--color-antique-gold-light);
+}
+
+#experience:is([data-gallery-theme='black'], [data-gallery-theme='ombre']) .gallery-view {
+  --glass-fill: rgb(232 217 182 / 14%);
+  --glass-hover-fill: rgb(232 217 182 / 23%);
+}
+#experience:is([data-gallery-theme='black'], [data-gallery-theme='ombre']) :is(.gallery-grid-name, .gallery-dialog figcaption) {
+  --glass-fill: rgb(28 24 19 / 88%);
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  @media (forced-colors: none) {
+    #experience[data-gallery-theme='champagne-gold'] .gallery-gold-text {
+      background-image: linear-gradient(180deg, #62421f 16%, #81592f 49%, #62421f 85%);
+    }
+
+    #experience:is([data-gallery-theme='black'], [data-gallery-theme='ombre']) .gallery-gold-text {
+      background-image: linear-gradient(180deg, #f7eac9 16%, #deb77a 53%, #f3d6a0 86%);
+      color: transparent;
+    }
+  }
+}
+
+@media (min-height: 481px) and (prefers-reduced-motion: no-preference) {
+  .experience-gallery .gallery-caption { margin-top: clamp(6px, 1.05svh, 10px); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .experience-hero::after { display: block; height: 100svh; content: ''; }
+  .experience-hero .abundance-hero {
+    position: sticky;
+    top: 0;
+    /* Keep the film and plate aligned when scrolling interrupts the opening. */
+    --hero-opening-y: 0px !important;
+    --hero-opening-scale: 1 !important;
+    --hero-scroll-y: 0px !important;
+  }
+  #experience { margin-block-start: -100svh; }
+  .experience-living::after {
+    display: block;
+    height: var(--experience-panorama-hold);
+    content: '';
+  }
+  .experience-township { position: sticky; top: 0; }
+  .experience-township .image-break,
+  .experience-township .image-break__frame {
+    height: 100svh;
+  }
+  .experience-township .image-break__frame { margin: 0; }
+  .experience-township .image-break__frame img { height: 100%; object-fit: cover; object-position: 62% center; }
+  .experience-township-light {
+    position: absolute;
+    inset: 0;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--experience-gallery-paper);
+  }
+  .experience-gallery { margin-block-start: calc(-100svh - var(--experience-panorama-hold)); }
+  .experience-gallery .gallery-stage {
+    background:
+      linear-gradient(var(--experience-gallery-paper), transparent 24%),
+      radial-gradient(ellipse at 50% 43%, var(--color-ivory), var(--experience-gallery-paper) 46%, var(--gallery-canvas));
+  }
+  .experience-gallery .gallery-orbit:not([data-photos-ready]) { visibility: hidden; }
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  .garden-story + .experience-township { margin-block-start: calc(-1 * min(2svh, 20px)); }
+}

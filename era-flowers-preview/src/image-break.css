@@ -1,33 +1,63 @@
 .image-break {
   --cloud-height: 37.5vw;
-  --cloud-offset: -6vw;
-  --cloud-fade: 20vw;
+  --cloud-offset: clamp(-65px, -3.5vw, -26px);
+  --cloud-fade: clamp(24px, 3.5vw, 54px);
+  --cloud-scale-y: 0.52;
+  display: flow-root;
   position: relative;
-  min-height: 100svh;
   overflow: clip;
   background: #829a9e;
 }
 
-.image-break__parallax,
-.image-break__clouds {
-  position: absolute;
-  inset: 0;
-}
-
 .image-break__frame {
-  position: absolute;
-  inset: -15% 0;
-  transform-origin: center bottom;
+  position: relative;
+  isolation: isolate;
+  margin-block-start: -10%;
 }
 
 .image-break__frame img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+}
+
+.image-break__frame > img {
+  filter: brightness(1.09) saturate(0.96);
+}
+
+.image-break__morning-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  isolation: isolate;
+  display: none;
+}
+
+.image-break__morning-light img {
+  filter: brightness(0.37) saturate(0.56);
+}
+
+.image-break__morning-light::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, #284b7e47, #2c4b6e24 76%);
+  mix-blend-mode: screen;
 }
 
 .image-break__clouds {
+  position: absolute;
+  inset: 0;
   pointer-events: none;
+}
+
+.image-break__cloud-bank {
+  position: absolute;
+  inset: 0 0 auto;
+  height: min(23%, 232px);
+  overflow: clip;
+  mask-image: linear-gradient(#000 40%, #000b 70%, transparent);
+  filter: sepia(0.17);
+  opacity: 0.8;
 }
 
 .image-break__clouds::after {
@@ -41,6 +71,8 @@
 .image-break__layer {
   position: absolute;
   inset: var(--cloud-offset) 0 auto;
+  transform: scaleY(var(--cloud-scale-y));
+  transform-origin: top;
 }
 
 .image-break__track {
@@ -63,6 +95,14 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .image-break__morning-light {
+    display: block;
+  }
+
+  .image-break__cloud-bank {
+    opacity: 0.94;
+  }
+
   .image-break__track {
     animation: cloud-drift 32s linear infinite paused;
   }
@@ -77,10 +117,17 @@
   to { transform: translateX(calc(-100% / 3)); }
 }
 
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  .garden-story + .image-break {
+    margin-block-start: calc(-1 * min(2svh, 20px));
+  }
+}
+
 @media (max-width: 991px) {
   .image-break {
     --cloud-height: 72.1154vw;
-    --cloud-offset: -15.3846vw;
-    --cloud-fade: 42.3077vw;
+    --cloud-offset: clamp(-60px, -7vw, -20px);
+    --cloud-fade: clamp(18px, 5.5vw, 46px);
+    --cloud-scale-y: 0.34;
   }
 }

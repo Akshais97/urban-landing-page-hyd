@@ -1,0 +1,81 @@
+.abundance-hero .topbar {
+  position: relative;
+  z-index: 5;
+  align-items: center;
+  gap: 20px;
+  margin-inline: auto;
+}
+.abundance-hero a { text-decoration: none; }
+.abundance-hero .abundance-link { text-decoration: underline; }
+.abundance-hero .ico {
+  display: block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.abundance-hero .lg {
+  position: relative;
+  isolation: isolate;
+}
+.abundance-hero .lg > .lqg-lens { position: absolute; z-index: 0; pointer-events: none; }
+.abundance-hero .lg > .lqg-glass { position: absolute; inset: 0 auto auto 0; z-index: 1; pointer-events: none; }
+.abundance-hero .lg > .c { position: relative; z-index: 2; }
+.abundance-hero .navpill { display: flex; align-items: center; padding: 5px; }
+.abundance-hero .navpill .c { display: flex; gap: 2px; position: static; }
+.abundance-hero .navpill a {
+  position: relative;
+  z-index: 3;
+  display: block;
+  padding-block: 11px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+.abundance-hero .navpill a[aria-current='location'] { color: var(--color-gold-ink); }
+.abundance-hero .navthumb {
+  position: absolute;
+  z-index: 2;
+  inset: 5px auto 5px 5px;
+  width: 66px;
+  transition: left .45s cubic-bezier(.3,1.35,.5,1), width .45s cubic-bezier(.3,1.35,.5,1);
+}
+.abundance-hero .navthumb::after {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  bottom: -1px;
+  left: calc(50% - 2px);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+.abundance-hero .menu-toggle { display: grid; place-items: center; }
+.abundance-hero .menu-toggle .c { display: flex; flex-direction: column; gap: 4px; }
+.abundance-hero .menu-line {
+  display: block;
+  width: 15px;
+  height: 1px;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.abundance-hero .menu-toggle[aria-expanded='true'] .menu-line:first-child { transform: translateY(5px) rotate(45deg); }
+.abundance-hero .menu-toggle[aria-expanded='true'] .menu-line:nth-child(2) { opacity: 0; }
+.abundance-hero .menu-toggle[aria-expanded='true'] .menu-line:last-child { transform: translateY(-5px) rotate(-45deg); }
+.abundance-hero .header-menu {
+  position: absolute;
+  z-index: 6;
+  border-radius: 22px;
+}
+.abundance-hero .header-menu[hidden] { display: none; }
+.abundance-hero .header-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 46px;
+  border-bottom: 1px solid;
+}
+.abundance-hero .header-menu a:last-child { border-bottom: 0; }

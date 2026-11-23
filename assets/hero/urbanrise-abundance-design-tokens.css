@@ -1,0 +1,45 @@
+:root {
+  --color-antique-gold-light: #e8d9b6;
+  --color-champagne-paper: #f3e8d1;
+  --color-ivory: #f8f1e3;
+  --color-paper-white: #fcf9f2;
+  --color-sand: #e3d1ae;
+  --color-antique-gold: #a68142;
+  --color-gold-ink: #6f4a1f;
+  --color-bronze-action: #755024;
+  --color-brown-ink: #2c241a;
+  --color-brown-body: #5c5144;
+  --color-forest: #142b25;
+  --color-botanical-dark: #243126;
+  --color-botanical-muted: #5e6e4c;
+  --color-lime: #c0e468;
+  --glass-champagne: var(--color-champagne-paper);
+  --font-display: "EB Garamond", Georgia, serif;
+  --font-body: "Lato", Arial, sans-serif;
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  src: url("fonts/eb-garamond.woff2") format("woff2");
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("fonts/eb-garamond-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("fonts/lato-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("fonts/lato-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}

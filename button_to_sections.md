@@ -17,11 +17,12 @@ This document records the current destinations and behaviors. To change a mappin
 | What's new | Hamburger menu | Release notes - `#release` | Scrolls to release features. |
 | Version check | Hamburger menu | Home diagnostic - `#version` | Scrolls to the questionnaire. |
 | The lineup | Hamburger menu | Residence models - `#lineup` | Scrolls to the three models. |
-| Join Early Access | Header / footer | Early-access form — `#ov-join` | Opens the existing modal. The mobile arrow button uses the same destination. |
+| Register Interest | Hero / hamburger menu | Early-access form — `#ov-join` | Opens the existing modal and returns focus to the originating control on close. The hero link goes to `#access` if JavaScript is unavailable. |
+| Join Early Access | Footer | Early-access form — `#ov-join` | Opens the existing modal. |
 | Early-access notification (`#accessInvitationOpen`) | Fixed top-right, below header | Existing lead form - `#ov-join` | Appears on each page load, including refreshes, after 25 seconds of visible browsing, then becomes a compact bell. Clicking opens the form. Dismiss or Escape removes the invitation. |
-| Open / Close menu — `#menuToggle` | Header | Compact dropdown — `#ov-menu` | Toggles the dropdown and changes the three bars into an X. Escape, an outside click, or choosing a link closes it. |
-| Check Your Version | Hero version card (`#heroCheckVersion`) | Version check (`#version`) | Scrolls to the 12-question home version check. |
-| Remind Me Later | Hero version card — `#heroRemindLater` | Bottom message — `#introToast` | Uses the same messages and shake effect as the intro's Remind me later button. Repeated clicks advance the messages. Each message disappears after 3.2 seconds; another click restarts that timer. |
+| Open / Close menu — `#menuToggle` | Header | Compact dropdown — `#ov-menu` | The glass panel opens from and retracts toward the toggle. Escape, an outside click, or choosing a link closes it. Escape returns focus to the toggle. |
+| Explore Residences | Hero | Residences — `#residences` | Scrolls to the residence gallery section. |
+| Explore the development | Hero, desktop arrow | Why Home 2.0 — `#why-home` | Scrolls to the first section after the hero. |
 
 ## Section buttons
 
@@ -59,12 +60,9 @@ These controls perform actions rather than navigate to a section.
 
 | Button / control | Location | Action |
 | --- | --- | --- |
-| Skip intro — `#skipIntro` | Startup intro — `#intro` | Closes the intro and reveals the hero. |
-| Remind me later — `#laterBtn` | Startup intro | Shows a temporary message in `#introToast` and shakes the dialog. Shares its message sequence with the hero reminder. |
-| Update — `#updateBtn` | Startup intro | Runs the update progress sequence, then reveals the hero. |
+| Parchment reveal | Hero background | The four-second video plays once and hands off to the matching still. Reduced motion and data saving start on the still. |
 | Play / Pause — `#vPlay` | Film player in `#vision` | Starts or pauses the preview. |
 | Full screen — `#vFull` | Film player | Toggles fullscreen. |
-| Time-of-day slider — `#todRange` | Hero | Changes the hero's time-of-day appearance. |
 | Join Early Access submit | Early-access form — `#joinForm` | Validates the fields and displays the existing local confirmation — `#joinDone`. No server submission is currently connected. |
 | Close early access | `#ov-join` | Closes the form overlay and restores focus to the opening control. |
 | Join early access | Header dropdown — `#ov-menu` | Closes the dropdown and opens the existing form — `#ov-join`. |
