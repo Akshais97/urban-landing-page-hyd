@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import desktopScene from '../../assets/background/carbon_calculator_banner.jpeg';
 import mobileScene from '../../assets/background/carbon_calculator_mobile_banner.jpeg';
 import { carbonAssumptions, carbonCategories, estimateCarbon } from './carbon-model.js';
+import { ChapterTitle, useChapterMotion } from './ChapterMotion.jsx';
 import './carbon-calculator.css';
 
 const initialHousehold = {
@@ -29,7 +30,7 @@ function CarbonRange({ field, value, onChange, children }) {
   const displayValue = `${number.format(value)}${unit ? ` ${unit}` : ''}`;
 
   return (
-    <div className="carbon-field">
+    <div className="carbon-field" data-chapter-item>
       <label htmlFor={id}>{label}</label>
       <span className="carbon-field-value" aria-hidden="true">{displayValue}</span>
       <input id={id} type="range" min={min} max={max} step={step} value={value}
@@ -43,7 +44,7 @@ function CarbonRange({ field, value, onChange, children }) {
 
 function CarbonInputs({ household, onChange }) {
   return (
-    <section className="carbon-panel" aria-labelledby="carbon-inputs-title">
+    <section className="carbon-panel" aria-labelledby="carbon-inputs-title" data-chapter-surface data-chapter-group="flow">
       <h3 id="carbon-inputs-title">How you live today</h3>
       <p className="carbon-panel-copy">Adjust the values to match your household.</p>
       {fields.map(field => (
@@ -121,15 +122,15 @@ function CarbonResults({ result, people }) {
   }
 
   return (
-    <section className="carbon-panel carbon-results" aria-labelledby="carbon-results-title">
+    <section className="carbon-panel carbon-results" aria-labelledby="carbon-results-title" data-chapter-surface>
       <h3 id="carbon-results-title">Your annual carbon picture</h3>
       <p className="carbon-panel-copy">Tonnes of CO₂ per year for your household.</p>
-      <div className="carbon-totals">
+      <div className="carbon-totals" data-chapter-group="stagger">
         {[
           ['Your home today', todayTotal],
           ['Abundance scenario', abundanceTotal],
         ].map(([label, total], index) => (
-          <div key={label} className="carbon-total" data-projection={index === 1}>
+          <div key={label} className="carbon-total" data-projection={index === 1} data-chapter-item>
             <span>{label}</span>
             <strong>{tonnes(total)}<small> t</small></strong>
             <span>{tonnes(total / people)} t per person</span>
@@ -138,9 +139,9 @@ function CarbonResults({ result, people }) {
       </div>
       <p className="sr-only" role="status">{report}</p>
       <p className="carbon-saving"><strong>{reduction}%</strong> estimated reduction with Abundance</p>
-      <div className="carbon-comparison" aria-hidden="true">
-        <div><span>Today</span><span className="carbon-bar"><i /></span></div>
-        <div><span>Abundance</span><span className="carbon-bar"><i style={{ width: `${100 * abundanceTotal / todayTotal}%` }} /></span></div>
+      <div className="carbon-comparison" aria-hidden="true" data-chapter-meter>
+        <div><span>Today</span><span className="carbon-bar"><span className="carbon-bar-fill"><i /></span></span></div>
+        <div><span>Abundance</span><span className="carbon-bar"><span className="carbon-bar-fill"><i style={{ transform: `scaleX(${abundanceTotal / todayTotal})` }} /></span></span></div>
       </div>
       <dl className="carbon-equivalents">
         <div><dt>kg CO₂ saved per year</dt><dd>{kilograms.format(saved)}</dd></div>
@@ -159,20 +160,23 @@ function CarbonResults({ result, people }) {
 }
 
 export default function CarbonCalculator() {
+  const section = useRef(null);
   const [household, setHousehold] = useState(initialHousehold);
   const result = estimateCarbon(household);
   const updateHousehold = (key, value) => setHousehold(current => ({ ...current, [key]: value }));
+  useChapterMotion(section);
 
   return (
-    <section className="carbon-calculator" id="carbon-calculator" aria-labelledby="carbon-title">
-      <picture className="carbon-scenery" aria-hidden="true">
+    <section className="carbon-calculator" ref={section} id="carbon-calculator" aria-labelledby="carbon-title" data-motion-chapter>
+      <picture className="carbon-scenery" aria-hidden="true" data-chapter-scene="depth">
         <source media="(max-width: 640px)" srcSet={mobileScene} width="941" height="1672" />
         <img src={desktopScene} alt="" width="2752" height="1536" loading="lazy" decoding="async" />
       </picture>
+      <div className="chapter-edge" data-chapter-edge aria-hidden="true" />
       <div className="carbon-wrap">
-        <header className="carbon-heading">
-          <p>Carbon calculator</p>
-          <h2 id="carbon-title">Your home has a carbon bill. <span>See what Abundance could cut.</span></h2>
+        <header className="carbon-heading" data-chapter-heading>
+          <p data-chapter-intro>Carbon calculator</p>
+          <ChapterTitle id="carbon-title" lines={['Your home has a carbon bill.', 'See what Abundance could cut.']} />
         </header>
         <div className="carbon-tool">
           <CarbonInputs household={household} onChange={updateHousehold} />

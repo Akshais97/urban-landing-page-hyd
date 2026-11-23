@@ -35,7 +35,7 @@
   letter-spacing: -.026em;
   text-wrap: balance;
 }
-.followup-story h2 span { color: var(--followup-accent); }
+.followup-story .chapter-title-accent { color: var(--followup-accent); }
 .followup-lead { max-width: 50ch; margin-block: 22px 0; color: var(--followup-muted); text-wrap: pretty; }
 .followup-muted { color: var(--followup-muted); font-size: 14px; }
 .followup-actions { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -97,11 +97,10 @@
 .questionnaire-body,
 .founding-form,
 .founding-confirmation { padding: clamp(18px, 3vw, 32px); }
-.questionnaire-question { transition: opacity .14s ease; }
 .questionnaire-question[data-leaving='true'] { opacity: 0; pointer-events: none; }
 .questionnaire-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--followup-accent); font-size: 13px; }
 .questionnaire-track { height: 4px; margin-block: 10px 0; border-radius: 8px; overflow: hidden; background: rgb(239 235 216 / 15%); }
-.questionnaire-track > span { display: block; height: 100%; background: #bed7b2; }
+.questionnaire-track > span { display: block; height: 100%; background: #bed7b2; transform-origin: left center; }
 .questionnaire-body h3, .founding-confirmation h3 { font: 500 clamp(27px, 3vw, 41px)/1.1 var(--display); }
 .questionnaire-question h3 { margin-block: 22px 18px; }
 .questionnaire-options { display: grid; gap: 8px; }
@@ -144,6 +143,60 @@
 .configuration-model > strong { font: 500 clamp(27px, 3vw, 43px)/1 var(--display); }
 .configuration-spec { display: grid; gap: 4px; color: var(--followup-muted); }
 .configuration-link { display: flex; align-items: center; justify-content: space-between; gap: 6px; min-height: 44px; padding-top: 8px; border-top: 1px solid var(--followup-rule); color: var(--followup-accent); font-size: 14px; }
+.configuration-link > span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid var(--followup-rule);
+  border-radius: 50%;
+  background: rgb(232 217 182 / 7%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .questionnaire-features li,
+  .questionnaire-features .followup-icon,
+  .questionnaire-options button {
+    transition: color .32s var(--chapter-ease), background-color .32s var(--chapter-ease),
+      border-color .28s var(--chapter-ease), scale .2s var(--chapter-ease);
+  }
+  .questionnaire-options button[aria-pressed='true'] { border-color: rgb(190 215 178 / 72%); }
+  .questionnaire-options button:active { scale: .99; }
+  .questionnaire-track > span { transition: transform .42s var(--chapter-ease); }
+  .questionnaire-question { transition: opacity .14s ease-out, transform .14s ease-out; }
+  .questionnaire-question[data-leaving='true'] { transform: translateY(-4px); }
+  .questionnaire-question > h3,
+  .questionnaire-question > .questionnaire-options,
+  .questionnaire-question > .questionnaire-actions,
+  .questionnaire-result { animation: questionnaire-enter .42s var(--chapter-ease) both; }
+  .questionnaire-question > .questionnaire-options { animation-delay: 45ms; }
+  .questionnaire-question > .questionnaire-actions { animation-delay: 90ms; }
+  .questionnaire-scores .questionnaire-track > span { animation: questionnaire-fill .72s var(--chapter-ease) both; }
+
+  .configuration-model {
+    transition: translate .44s var(--chapter-ease), scale .32s var(--chapter-ease),
+      border-color .38s var(--chapter-ease), background-color .38s var(--chapter-ease);
+  }
+  .configuration-link > span { transition: transform .42s var(--chapter-ease), background-color .38s var(--chapter-ease); }
+  .configuration-model:active { scale: .99; }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .configuration-model:hover { translate: 0 -5px; border-color: var(--followup-accent); }
+  .configuration-model:hover .configuration-link > span,
+  .configuration-model:focus-visible .configuration-link > span {
+    transform: translate(2px, -2px);
+    background: rgb(232 217 182 / 16%);
+  }
+}
+
+@keyframes questionnaire-enter {
+  from { opacity: .25; transform: translateY(8px); }
+}
+
+@keyframes questionnaire-fill {
+  from { transform: scaleX(0); }
+}
 
 .abundance-film-section {
   --followup-accent: var(--color-gold-ink);

@@ -37,7 +37,7 @@
   letter-spacing: -.025em;
   text-wrap: balance;
 }
-.carbon-heading h2 span { display: block; color: var(--carbon-accent); }
+.carbon-heading .chapter-title-accent { color: var(--carbon-accent); }
 
 .carbon-tool {
   display: grid;
@@ -130,7 +130,9 @@
 .carbon-comparison { display: grid; gap: 10px; color: var(--carbon-muted); font-size: 13px; }
 .carbon-comparison > div { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 8px; }
 .carbon-bar { display: block; height: 8px; overflow: hidden; border-radius: 999px; background: rgb(235 235 214 / 12%); }
-.carbon-bar i { display: block; width: 100%; height: 100%; border-radius: inherit; background: var(--carbon-accent); }
+.carbon-bar-fill,
+.carbon-bar i { display: block; width: 100%; height: 100%; border-radius: inherit; transform-origin: left center; }
+.carbon-bar i { background: var(--carbon-accent); }
 .carbon-comparison > div:last-child i { background: var(--carbon-green); }
 
 .carbon-equivalents {
@@ -175,6 +177,16 @@
 .carbon-feedback:not(:empty) { margin-top: 8px; }
 .carbon-calculator :focus-visible,
 .carbon-fuels input:focus-visible + span { outline: 2px solid var(--carbon-accent); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .carbon-field-value { transition: color .28s var(--chapter-ease), transform .28s var(--chapter-ease); }
+  .carbon-field:focus-within .carbon-field-value { color: var(--color-paper-white); transform: translateY(-2px); }
+  .carbon-fuels label span,
+  .carbon-actions :is(a, button) { transition: background-color .32s var(--chapter-ease), color .32s var(--chapter-ease), scale .22s var(--chapter-ease); }
+  .carbon-fuels label:active span,
+  .carbon-actions :is(a, button):active { scale: .98; }
+  .carbon-bar i { transition: transform .46s var(--chapter-ease); }
+}
 
 @media (max-width: 800px) {
   .carbon-tool { grid-template-columns: minmax(0, 1fr); }

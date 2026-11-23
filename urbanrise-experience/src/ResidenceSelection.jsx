@@ -5,6 +5,7 @@ import lineupMobile from '../../assets/background/lineup_mobile_banner.png';
 import accessDesktop from '../../assets/background/early-access-desktop-banner.png';
 import accessMobile from '../../assets/background/early-access-mobile-banner.png';
 import AbundanceFilm from './AbundanceFilm.jsx';
+import { ChapterTitle, useChapterMotion } from './ChapterMotion.jsx';
 import SectionScenery from './SectionScenery.jsx';
 
 const models = [
@@ -14,18 +15,21 @@ const models = [
 ];
 
 function Configuration({ model, onChoose }) {
+  const section = useRef(null);
+  useChapterMotion(section);
+
   return (
-    <section className="followup-section residence-configuration" id="lineup" aria-labelledby="lineupTitle">
-      <SectionScenery desktop={lineupDesktop} mobile={lineupMobile} />
+    <section ref={section} className="followup-section residence-configuration" id="lineup" aria-labelledby="lineupTitle" data-motion-chapter>
+      <SectionScenery desktop={lineupDesktop} mobile={lineupMobile} chapterEffect="depth" />
       <div className="followup-wrap">
-        <header className="followup-story configuration-heading">
-          <p className="followup-kicker">Abundance residences</p>
-          <h2 id="lineupTitle">Find your home<br /><span>at The Lifescape</span></h2>
-          <p className="followup-lead">All three layouts share the same Abundance features, including on-site renewable energy, landscaped terraces and clubhouses.</p>
+        <header className="followup-story configuration-heading" data-chapter-heading>
+          <p className="followup-kicker" data-chapter-intro>Abundance residences</p>
+          <ChapterTitle id="lineupTitle" lines={['Find your home', 'at The Lifescape']} />
+          <p className="followup-lead" data-chapter-intro>All three layouts share the same Abundance features, including on-site renewable energy, landscaped terraces and clubhouses.</p>
         </header>
-        <div className="configuration-grid" role="group" aria-label="Choose a residence layout">
+        <div className="configuration-grid" role="group" aria-label="Choose a residence layout" data-chapter-group="flow">
           {models.map(({ name, bathrooms, size }) => (
-            <button type="button" key={name} className="followup-panel configuration-model"
+            <button type="button" key={name} className="followup-panel configuration-model" data-chapter-item
               aria-pressed={model === name} onClick={() => onChoose(name)}>
               <strong>{name}</strong>
               <span className="configuration-spec">{bathrooms}<span>{size}</span></span>

@@ -3,6 +3,7 @@ import { useReducedMotion } from 'framer-motion';
 import desktopScene from '../../assets/background/version_section_desktop_banner.png';
 import mobileScene from '../../assets/background/version_section_mobile_banner.png';
 import { features } from './abundance-features.js';
+import { ChapterTitle, useChapterMotion } from './ChapterMotion.jsx';
 import SectionScenery from './SectionScenery.jsx';
 
 const questions = [
@@ -29,7 +30,7 @@ function QuestionnaireResult({ answers, titleRef, onRetake }) {
   const weakest = scores.filter(({ percent }) => percent === lowest).map(({ name }) => name);
 
   return (
-    <div className="questionnaire-body">
+    <div className="questionnaire-body questionnaire-result">
       <h3 ref={titleRef} tabIndex={-1}>Your home score</h3>
       <p className="questionnaire-score"><strong>{score}</strong> / 100</p>
       {weakest.length < scores.length && <p className="followup-muted">Lowest scores in {weakest.join(', ')}</p>}
@@ -37,7 +38,7 @@ function QuestionnaireResult({ answers, titleRef, onRetake }) {
         {scores.map(({ name, percent }) => (
           <li key={name}>
             <span>{name}</span><span>{percent}%</span>
-            <div className="questionnaire-track" aria-hidden="true"><span style={{ width: `${percent}%` }} /></div>
+            <div className="questionnaire-track" aria-hidden="true"><span style={{ transform: `scaleX(${percent / 100})` }} /></div>
           </li>
         ))}
       </ul>
@@ -57,6 +58,7 @@ function QuestionnaireResult({ answers, titleRef, onRetake }) {
 }
 
 export default function HomeQuestionnaire() {
+  const section = useRef(null);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [choosing, setChoosing] = useState(null);
@@ -65,6 +67,7 @@ export default function HomeQuestionnaire() {
   const focusNext = useRef(false);
   const reducedMotion = useReducedMotion();
   const finished = step === questions.length;
+  useChapterMotion(section);
 
   useEffect(() => () => clearTimeout(timer.current), []);
   useEffect(() => {
@@ -96,16 +99,16 @@ export default function HomeQuestionnaire() {
   const [category, question, options] = questions[step] ?? [];
 
   return (
-    <section className="followup-section home-questionnaire" id="version" aria-labelledby="versionTitle">
-      <SectionScenery desktop={desktopScene} mobile={mobileScene} />
+    <section ref={section} className="followup-section home-questionnaire" id="version" aria-labelledby="versionTitle" data-motion-chapter>
+      <SectionScenery desktop={desktopScene} mobile={mobileScene} chapterEffect="dissolve" />
       <div className="followup-wrap followup-split">
-        <div className="followup-story">
-          <p className="followup-kicker">Home check · About 90 seconds</p>
-          <h2 id="versionTitle">How does your<br />home measure up?</h2>
-          <p className="followup-lead">Answer 12 questions about daily life at home, from power cuts to time outdoors. See how your home scores across the six priorities behind Abundance.</p>
-          <ol className="questionnaire-features" aria-label="Home check categories">
+        <div className="followup-story" data-chapter-heading>
+          <p className="followup-kicker" data-chapter-intro>Home check · About 90 seconds</p>
+          <ChapterTitle id="versionTitle" lines={['How does your', 'home measure up?']} accent={false} />
+          <p className="followup-lead" data-chapter-intro>Answer 12 questions about daily life at home, from power cuts to time outdoors. See how your home scores across the six priorities behind Abundance.</p>
+          <ol className="questionnaire-features" aria-label="Home check categories" data-chapter-group="stagger">
             {features.map(({ id, name, icon }, index) => (
-              <li key={id} data-complete={step >= (index + 1) * 2} aria-current={!finished && Math.floor(step / 2) === index ? 'step' : undefined}>
+              <li key={id} data-chapter-item data-complete={step >= (index + 1) * 2} aria-current={!finished && Math.floor(step / 2) === index ? 'step' : undefined}>
                 <span className="followup-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={icon} /></svg></span>
                 {name}
                 {step >= (index + 1) * 2 && <span className="sr-only"> completed</span>}
@@ -113,21 +116,23 @@ export default function HomeQuestionnaire() {
             ))}
           </ol>
         </div>
-        <div className="followup-panel">
+        <div className="followup-panel" data-chapter-surface>
           <div className="followup-toolbar"><strong>Your home today</strong><span>The Lifescape</span></div>
           {finished ? <QuestionnaireResult answers={answers} titleRef={title} onRetake={() => { setAnswers([]); goTo(0); }} /> : (
-            <div key={step} className="questionnaire-body questionnaire-question" data-leaving={choosing !== null}>
+            <div className="questionnaire-body">
               <div className="questionnaire-meta"><span>{category}</span><span>{step + 1} / {questions.length}</span></div>
-              <div className="questionnaire-track" aria-hidden="true"><span style={{ width: `${100 * step / questions.length}%` }} /></div>
-              <h3 ref={title} tabIndex={-1} id="version-question">{question}</h3>
-              <div className="questionnaire-options" role="group" aria-labelledby="version-question">
-                {options.map((option, index) => (
-                  <button type="button" key={option} aria-pressed={(choosing ?? answers[step]) === index} onClick={() => choose(index)}>{option}</button>
-                ))}
-              </div>
-              <div className="questionnaire-meta questionnaire-actions">
-                <button className="followup-action followup-action--quiet" type="button" disabled={step === 0 || choosing !== null} onClick={() => goTo(step - 1)}>Back</button>
-                <span>Choose an answer to continue</span>
+              <div className="questionnaire-track" aria-hidden="true"><span style={{ transform: `scaleX(${step / questions.length})` }} /></div>
+              <div key={step} className="questionnaire-question" data-leaving={choosing !== null}>
+                <h3 ref={title} tabIndex={-1} id="version-question">{question}</h3>
+                <div className="questionnaire-options" role="group" aria-labelledby="version-question">
+                  {options.map((option, index) => (
+                    <button type="button" key={option} aria-pressed={(choosing ?? answers[step]) === index} onClick={() => choose(index)}>{option}</button>
+                  ))}
+                </div>
+                <div className="questionnaire-meta questionnaire-actions">
+                  <button className="followup-action followup-action--quiet" type="button" disabled={step === 0 || choosing !== null} onClick={() => goTo(step - 1)}>Back</button>
+                  <span>Choose an answer to continue</span>
+                </div>
               </div>
             </div>
           )}

@@ -1,0 +1,27 @@
+[data-motion-chapter] {
+  --chapter-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+.chapter-title-mask,
+.chapter-title-mask > [data-chapter-line] { display: block; }
+
+.chapter-title-mask {
+  overflow: clip;
+  overflow-clip-margin: .13em;
+}
+
+[data-chapter-scene] { overflow: clip; }
+
+.chapter-edge {
+  position: absolute;
+  inset: 0 clamp(16px, 4vw, 48px) auto;
+  z-index: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #e8d9b6, rgb(232 217 182 / 38%) 42%, transparent);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-edge { opacity: .55; }
+}

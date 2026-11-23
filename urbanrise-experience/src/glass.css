@@ -47,17 +47,14 @@
 }
 
 #home .navpill a:is(:hover, [aria-current]) { color: var(--glass-ink); }
-#home .abundance-wordmark.lg {
-  --glass-fill: rgb(29 27 23 / 58%);
+#home .abundance-wordmark {
+  --glass-fill: #48433b;
   --glass-rim: rgb(252 249 242 / 42%);
   --glass-coat: linear-gradient(180deg, rgb(255 255 255 / 20%), transparent 55%);
   padding: 0.625rem 0.875rem;
-}
-
-#home .abundance-wordmark.lg:not(.lg-on),
-#home .abundance-wordmark.lg-on > .lqg-glass {
-  -webkit-backdrop-filter: blur(10px) grayscale(1);
-  backdrop-filter: blur(10px) grayscale(1);
+  border-radius: 999px;
+  background: var(--glass-coat), var(--glass-fill);
+  box-shadow: var(--glass-shadow);
 }
 
 #home .header-menu {

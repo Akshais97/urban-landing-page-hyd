@@ -131,3 +131,7 @@
     --cloud-scale-y: 0.34;
   }
 }
+
+@media (max-width: 679px) {
+  .image-break__frame { margin-block-start: -18%; }
+}
