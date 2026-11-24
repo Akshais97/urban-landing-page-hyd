@@ -21,7 +21,8 @@ export default defineConfig({
         return html.replace(footerMarker, () => footer
           .replace('<footer class="ur-finale"', '<footer class="ur-finale" id="footer"')
           .replace(/<(\/?)h1\b/g, '<$1h2')
-          .replace('src="assets/logo.png"', 'src="%BASE_URL%logo.png"')
+          .replace('src="assets/lifescape-logo.webp" width="640" height="172"',
+            'src="%BASE_URL%lifescape-logo.webp" width="640" height="149"')
           .replace('href="index.html#access"', 'href="#access"')
           .replace('href="index.html#residences"', 'href="#lineup"')
           .replace('href="#ur-closing-top"', 'href="#home"'));

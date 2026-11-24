@@ -5,6 +5,12 @@
   gap: 20px;
   margin-inline: auto;
 }
+@media (width > 1080px) {
+  #home .abundance-hero .topbar {
+    grid-template-columns: minmax(min-content, 1fr) auto minmax(min-content, 1fr);
+  }
+}
+
 .abundance-hero a { text-decoration: none; }
 .abundance-hero .abundance-link { text-decoration: underline; }
 .abundance-hero .ico {

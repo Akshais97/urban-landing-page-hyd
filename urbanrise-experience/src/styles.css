@@ -1,5 +1,5 @@
-@import '../../era-flowers-preview/src/styles.css';
-@import '../../sobha-gallery-preview/src/styles.css';
+@import '../../flowers-preview/src/styles.css';
+@import '../../gallery/src/styles.css';
 @import './hero-shell.css';
 @import '../../assets/hero/hero.css';
 @import './glass.css';

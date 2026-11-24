@@ -3,15 +3,17 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const sources = {
-  '../assets/': [['logo.png', 'logo.png']],
+  '../assets/': [
+    ['lifescape-wordmark.webp', 'lifescape-logo.webp'], ['lifescape-favicon.png', 'lifescape-favicon.png'],
+  ],
   '../assets/hero/': [
-    'golden-hour.webp', 'urbanrise-wordmark.webp', 'parchment-reveal.webm', 'parchment-reveal.mp4',
+    'golden-hour.webp', 'parchment-reveal.webm', 'parchment-reveal.mp4',
   ].map(file => [file, `hero/${file}`]),
-  '../era-flowers-preview/public/': [
+  '../flowers-preview/public/': [
     'fonts', 'clouds', 'project/garden-terrace.webp', 'project/golden-hour-villa-township.webp',
     ...['01', '02'].flatMap(id => ['webm', 'mov', 'avif'].map(ext => `flowers/flower-${id}.${ext}`)),
   ].map(file => [file, file]),
-  '../sobha-gallery-preview/public/': [['gallery/amenities', 'gallery/amenities']],
+  '../gallery/public/': [['gallery/amenities', 'gallery/amenities']],
 };
 
 await Promise.all(Object.entries(sources).flatMap(([directory, files]) => files.map(async ([source, output]) => {

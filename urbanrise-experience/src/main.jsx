@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { MotionConfig, useReducedMotion } from 'framer-motion';
-import FlowerSequence from '../../era-flowers-preview/src/FlowerSequence.jsx';
-import ImageBreak from '../../era-flowers-preview/src/ImageBreak.jsx';
-import Gallery from '../../sobha-gallery-preview/src/Gallery.jsx';
+import FlowerSequence from '../../flowers-preview/src/FlowerSequence.jsx';
+import ImageBreak from '../../flowers-preview/src/ImageBreak.jsx';
+import Gallery from '../../gallery/src/Gallery.jsx';
 import AbundanceFeatures from './AbundanceFeatures.jsx';
 import Benchmarks from './Benchmarks.jsx';
 import CarbonCalculator from './CarbonCalculator.jsx';

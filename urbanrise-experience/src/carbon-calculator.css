@@ -24,8 +24,8 @@
 .carbon-scenery img { width: 100%; height: 100%; object-fit: cover; object-position: center 36%; }
 .carbon-scenery::after {
   content: '';
-  background: linear-gradient(0deg, var(--color-forest), rgb(14 30 25 / 22%) 74%),
-    linear-gradient(90deg, rgb(13 29 24 / 87%), rgb(13 29 24 / 48%));
+  background: linear-gradient(0deg, var(--color-forest), transparent 77%),
+    linear-gradient(90deg, rgb(18 39 29 / 87%), rgb(29 42 29 / 41%) 56%, rgb(39 43 29 / 24%));
 }
 
 .carbon-wrap { max-width: 1440px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 48px); }
@@ -66,7 +66,7 @@
   border-top: 1px solid var(--carbon-rule);
 }
 
-.carbon-field-value { color: var(--carbon-accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.carbon-field-value { color: var(--carbon-accent); white-space: nowrap; }
 .carbon-field input[type='range'] {
   grid-column: 1 / -1;
   width: 100%;
@@ -121,7 +121,7 @@
   font-size: 13px;
 }
 .carbon-total[data-projection='true'] { background: rgb(150 189 133 / 11%); }
-.carbon-total strong { font: 500 clamp(36px, 5vw, 64px)/.9 var(--display); letter-spacing: -.04em; color: var(--color-paper-white); }
+.carbon-total strong { font: 700 clamp(32px, 4.4vw, 60px)/1.02 var(--font-body); letter-spacing: -.035em; color: var(--color-paper-white); }
 .carbon-total[data-projection='true'] strong { color: var(--carbon-green); }
 .carbon-total strong small { font: 400 .4em/1 var(--font-body); letter-spacing: 0; }
 .carbon-saving { margin-block: 20px 16px; }
@@ -144,11 +144,14 @@
   border-top: 1px solid var(--carbon-rule);
 }
 .carbon-equivalents > div { display: flex; flex-direction: column-reverse; justify-content: start; gap: 4px; }
-.carbon-equivalents dd { margin: 0; color: var(--carbon-green); font: 500 clamp(22px, 3vw, 34px)/1.1 var(--display); }
+.carbon-equivalents dd { margin: 0; color: var(--carbon-green); font: 700 clamp(20px, 2.5vw, 32px)/1.1 var(--font-body); }
 .carbon-equivalents dt { color: var(--carbon-muted); font-size: 13px; }
 .carbon-breakdown { padding-block: 10px; border-block: 1px solid var(--carbon-rule); }
 .carbon-breakdown summary { padding-block: 6px; color: var(--carbon-accent); font-size: 14px; cursor: pointer; }
-.carbon-breakdown table { width: 100%; margin-block: 12px 14px; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+.carbon-breakdown table { width: 100%; margin-block: 12px 14px; border-collapse: collapse; font-size: 13px; }
+.carbon-calculator :is(.carbon-field-value, .carbon-total, .carbon-total strong, .carbon-saving strong, .carbon-equivalents dd, .carbon-breakdown table) {
+  font-variant-numeric: lining-nums tabular-nums;
+}
 .carbon-breakdown :is(th, td) { padding: 7px 3px; border-bottom: 1px solid var(--carbon-rule); text-align: right; }
 .carbon-breakdown th:first-child { text-align: left; }
 .carbon-breakdown th[scope='row'] { font-weight: 400; }

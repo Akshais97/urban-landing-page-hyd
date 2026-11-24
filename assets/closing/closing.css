@@ -35,8 +35,9 @@
 
 .ur-closing-header__brand img {
   display: block;
-  inline-size: clamp(6.75rem, 10vw, 9rem);
+  inline-size: clamp(7.5rem, 12vw, 11rem);
   block-size: auto;
+  filter: brightness(0);
 }
 
 .ur-closing-header__project {
@@ -322,9 +323,8 @@
 
 .ur-honours__logo {
   display: block;
-  inline-size: clamp(6.75rem, 9vw, 8rem);
+  inline-size: clamp(8rem, 11vw, 10rem);
   block-size: auto;
-  filter: brightness(0) invert(0.94);
 }
 
 .ur-honours__cities {

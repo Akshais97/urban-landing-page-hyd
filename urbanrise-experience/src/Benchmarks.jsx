@@ -1,7 +1,11 @@
 import { useRef, useState } from 'react';
-import benchmarkImage from '../../assets/background/Benchmarks_Section.png';
+import desktopScene from '../../assets/background/central-boulevard.webp';
+import compactDesktopScene from '../../assets/background/central-boulevard-1440.webp';
+import mobileScene from '../../assets/background/central-boulevard-mobile.webp';
+import compactMobileScene from '../../assets/background/central-boulevard-mobile-540.webp';
 import { features } from './abundance-features.js';
 import { ChapterTitle, useChapterMotion } from './ChapterMotion.jsx';
+import SectionScenery from './SectionScenery.jsx';
 import './benchmarks.css';
 
 const comparisons = {
@@ -26,9 +30,8 @@ export default function Benchmarks() {
 
   return (
     <section className="benchmarks" id="benchmarks" ref={section} aria-labelledby="benchmarks-title" data-abundance={showAbundance} data-motion-chapter>
-      <div className="benchmark-scene" aria-hidden="true">
-        <img src={benchmarkImage} alt="" width="1817" height="866" loading="lazy" decoding="async" />
-      </div>
+      <SectionScenery className="benchmark-scene" desktop={desktopScene} mobile={mobileScene}
+        compactDesktop={compactDesktopScene} compactMobile={compactMobileScene} />
       <div className="chapter-edge" data-chapter-edge aria-hidden="true" />
       <div className="benchmark-wrap">
         <header className="benchmark-heading">

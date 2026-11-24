@@ -1,8 +1,11 @@
 import { useRef, useState } from 'react';
-import desktopScene from '../../assets/background/carbon_calculator_banner.jpeg';
-import mobileScene from '../../assets/background/carbon_calculator_mobile_banner.jpeg';
+import desktopScene from '../../assets/background/carbon-solar-terraces.webp';
+import compactDesktopScene from '../../assets/background/carbon-solar-terraces-1440.webp';
+import mobileScene from '../../assets/background/carbon-solar-terraces-mobile.webp';
+import compactMobileScene from '../../assets/background/carbon-solar-terraces-mobile-540.webp';
 import { carbonAssumptions, carbonCategories, estimateCarbon } from './carbon-model.js';
 import { ChapterTitle, useChapterMotion } from './ChapterMotion.jsx';
+import SectionScenery from './SectionScenery.jsx';
 import './carbon-calculator.css';
 
 const initialHousehold = {
@@ -168,10 +171,8 @@ export default function CarbonCalculator() {
 
   return (
     <section className="carbon-calculator" ref={section} id="carbon-calculator" aria-labelledby="carbon-title" data-motion-chapter>
-      <picture className="carbon-scenery" aria-hidden="true" data-chapter-scene="depth">
-        <source media="(max-width: 640px)" srcSet={mobileScene} width="941" height="1672" />
-        <img src={desktopScene} alt="" width="2752" height="1536" loading="lazy" decoding="async" />
-      </picture>
+      <SectionScenery className="carbon-scenery" desktop={desktopScene} mobile={mobileScene}
+        compactDesktop={compactDesktopScene} compactMobile={compactMobileScene} chapterEffect="depth" />
       <div className="chapter-edge" data-chapter-edge aria-hidden="true" />
       <div className="carbon-wrap">
         <header className="carbon-heading" data-chapter-heading>

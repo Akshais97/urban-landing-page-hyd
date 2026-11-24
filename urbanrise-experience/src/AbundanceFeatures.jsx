@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import desktopScene from '../../assets/background/abundance-lounge.webp';
+import compactDesktopScene from '../../assets/background/abundance-lounge-1440.webp';
+import mobileScene from '../../assets/background/abundance-lounge-mobile.webp';
+import compactMobileScene from '../../assets/background/abundance-lounge-mobile-540.webp';
 import { features } from './abundance-features.js';
+import SectionScenery from './SectionScenery.jsx';
 import './release.css';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -128,7 +133,8 @@ export default function AbundanceFeatures() {
 
   return (
     <section className="release" id="release" aria-labelledby="release-title" ref={section}>
-      <div className="release-scene" aria-hidden="true" />
+      <SectionScenery className="release-scene" desktop={desktopScene} mobile={mobileScene}
+        compactDesktop={compactDesktopScene} compactMobile={compactMobileScene} />
       <div className="release-wrap">
         <header className="release-heading">
           <h2 id="release-title">What makes Abundance different</h2>

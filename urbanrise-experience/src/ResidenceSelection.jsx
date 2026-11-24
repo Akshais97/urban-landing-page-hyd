@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
-import lineupDesktop from '../../assets/background/lineup_desktop_banner.png';
-import lineupMobile from '../../assets/background/lineup_mobile_banner.png';
+import lineupDesktop from '../../assets/background/configuration-villas.webp';
+import lineupCompactDesktop from '../../assets/background/configuration-villas-1440.webp';
+import lineupMobile from '../../assets/background/configuration-villas-mobile.webp';
+import lineupCompactMobile from '../../assets/background/configuration-villas-mobile-540.webp';
 import accessDesktop from '../../assets/background/early-access-desktop-banner.png';
 import accessMobile from '../../assets/background/early-access-mobile-banner.png';
 import AbundanceFilm from './AbundanceFilm.jsx';
@@ -20,7 +22,8 @@ function Configuration({ model, onChoose }) {
 
   return (
     <section ref={section} className="followup-section residence-configuration" id="lineup" aria-labelledby="lineupTitle" data-motion-chapter>
-      <SectionScenery desktop={lineupDesktop} mobile={lineupMobile} chapterEffect="depth" />
+      <SectionScenery desktop={lineupDesktop} mobile={lineupMobile} compactDesktop={lineupCompactDesktop}
+        compactMobile={lineupCompactMobile} chapterEffect="depth" />
       <div className="followup-wrap">
         <header className="followup-story configuration-heading" data-chapter-heading>
           <p className="followup-kicker" data-chapter-intro>Abundance residences</p>

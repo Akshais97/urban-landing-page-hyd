@@ -73,10 +73,9 @@
   justify-self: start;
   min-height: 44px;
 }
-.abundance-wordmark img {
-  width: clamp(6.7rem, 10vw, 9rem);
+.abundance-wordmark > img {
+  width: clamp(7.5rem, 12vw, 11rem);
   height: auto;
-  filter: brightness(0) invert(1) drop-shadow(0 1px 5px rgb(35 24 13 / 32%));
 }
 .abundance-hero .navpill,
 .abundance-hero .menu-toggle {

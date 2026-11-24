@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/lifescape-favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UrbanRise — Home 2.0</title>
 <meta name="description" content="UrbanRise Home 2.0 — intelligent homes for a more meaningful life.">
@@ -56,8 +57,8 @@ html.lg-ready .lqg-lens,html.lg-ready .lqg-glass{opacity:1}
 .bg-hero .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,10,18,.55),rgba(6,10,18,.1) 45%,transparent 70%),linear-gradient(0deg,rgba(0,0,0,.35),transparent 30%)}
 .hero .layer{position:absolute;inset:0;padding:22px var(--pad) clamp(24px,2.6vw,40px)}
 .top{display:flex;align-items:center;gap:24px}
-.logo{font-family:var(--sans);font-weight:500;letter-spacing:.5em;font-size:15px;white-space:nowrap}
-.logo span{opacity:.6}
+.logo{display:block;flex:none;width:clamp(120px,12vw,176px)}
+.logo img{width:100%;height:auto}
 .nav{margin-left:clamp(20px,8vw,140px);display:flex;gap:4px;padding:5px;border-radius:999px}
 .nav a{position:relative;z-index:1;padding:10px 20px;font-size:13px;border-radius:999px;color:var(--on-dark-muted);transition:color .25s}
 .nav a[aria-current="true"]{color:#fff}
@@ -212,7 +213,7 @@ html.lg-ready .lqg-lens,html.lg-ready .lqg-glass{opacity:1}
 /* ---------- footer ---------- */
 footer{background:var(--ink);color:var(--on-dark-muted);font-size:13px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between;padding-top:44px;padding-bottom:44px}
-footer .logo{color:#fff;display:block;margin-bottom:10px}
+footer .logo{margin-bottom:10px}
 footer p{margin:0;max-width:44ch}
 footer button{color:#fff;font-weight:500;border-bottom:1px solid rgba(255,255,255,.5)}
 
@@ -279,7 +280,6 @@ footer button{color:#fff;font-weight:500;border-bottom:1px solid rgba(255,255,25
 }
 @media (max-width:480px){
   .join .lbl-long{display:none}
-  .logo{letter-spacing:.32em;font-size:13px}
   .stats b{font-size:26px}.stats span{font-size:11px}
   .p-top .chip{display:none}
   .p-cap{display:none}
@@ -315,7 +315,7 @@ footer button{color:#fff;font-weight:500;border-bottom:1px solid rgba(255,255,25
   <div class="bg bg-hero" aria-hidden="true"><div class="photo"></div><div class="gold"></div><div class="night"></div><div class="veil"></div></div>
   <div class="layer">
     <header class="top">
-      <a class="logo" href="#home" aria-label="UrbanRise home">URBAN<span>RISE</span></a>
+      <a class="logo" href="#home" aria-label="Urbanrise The Lifescape home"><img src="assets/lifescape-logo.webp" alt="" width="640" height="172"></a>
       <nav class="nav lg" data-glass="dark" aria-label="Primary">
         <span class="ind" aria-hidden="true"></span>
         <a href="#home" data-spy="home" aria-current="true">Home</a>
@@ -471,7 +471,7 @@ footer button{color:#fff;font-weight:500;border-bottom:1px solid rgba(255,255,25
 
 <footer id="location" data-section>
   <div class="wrap">
-    <div><span class="logo">URBAN<span style="opacity:.6">RISE</span></span><p>Site visits by appointment. Join early access and our team will share the location and arrange a private tour.</p></div>
+    <div><span class="logo"><img src="assets/lifescape-logo.webp" alt="Urbanrise The Lifescape" width="640" height="172" loading="lazy"></span><p>Site visits by appointment. Join early access and our team will share the location and arrange a private tour.</p></div>
     <div style="text-align:right"><button data-open="early">Join Early Access</button><p style="margin-top:14px">© 2026 UrbanRise. Images are artist's impressions.</p></div>
   </div>
 </footer>

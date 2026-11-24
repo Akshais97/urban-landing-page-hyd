@@ -17,8 +17,16 @@
 .followup-scenery > img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .followup-scenery::after {
   content: '';
-  background: linear-gradient(90deg, rgb(13 24 20 / 90%), rgb(13 25 21 / 59%) 64%, rgb(13 24 20 / 62%)),
+  background: var(--followup-scene-shade, linear-gradient(90deg, rgb(13 24 20 / 90%), rgb(13 25 21 / 59%) 64%, rgb(13 24 20 / 62%))),
     linear-gradient(0deg, rgb(13 23 19 / 82%), transparent 62%);
+}
+
+.home-questionnaire {
+  --followup-scene-shade: linear-gradient(90deg, rgb(14 39 27 / 81%), rgb(22 55 35 / 27%) 66%, rgb(22 55 35 / 23%));
+}
+
+.residence-configuration {
+  --followup-scene-shade: linear-gradient(90deg, rgb(28 34 25 / 81%), rgb(50 48 31 / 36%) 56%, rgb(53 44 29 / 22%));
 }
 
 .followup-wrap { max-width: 1440px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 48px); }

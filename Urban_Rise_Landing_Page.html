@@ -2,7 +2,7 @@
 <html lang="en" data-scene="p">
 <head>
 <meta charset="utf-8">
-<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/lifescape-favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>
 /* Demo reloads start at the hero; fresh section links still work. */
@@ -147,8 +147,7 @@ a{color:inherit;text-decoration:none}
 /* ---------- Hero ---------- */
 .topbar{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:clamp(18px,3vw,30px)}
 .logo{display:inline-flex;align-items:center;flex:none;padding:8px 10px;border-radius:8px;background:transparent}
-.logo-art{position:relative;display:block;width:clamp(140px,14vw,190px);aspect-ratio:1957/502;overflow:hidden}
-.logo-art img{position:absolute;display:block;width:120.746%;max-width:none;height:auto;left:-10.424%;top:-184.661%;filter:url(#logo-white-lettering)}
+.logo img{display:block;width:clamp(140px,12vw,170px);height:auto}
 .navpill{display:flex;align-items:center;padding:5px;gap:2px}
 .navpill .c{display:flex;gap:2px;position:static}
 .navpill a{position:relative;z-index:3;display:block;padding:11px 20px;font-size:13px;color:rgba(255,255,255,.82);border-radius:999px;transition:color .25s}
@@ -212,8 +211,8 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Home 2.0 release notes ---------- */
 .release{position:relative;isolation:isolate;overflow:hidden;padding:clamp(72px,8vw,112px) 0;background:#181b1c;color:#f6f3ee}
-.release .img-release-banner{background-image:url("assets/background/release-section-background-updated.png");background-position:55% 45%}
-@media(max-width:640px){.release .img-release-banner{background-image:url("assets/background/release-section-background-updated_mobile_banner.png")}}
+.release .img-release-banner{background-image:url("assets/background/abundance-lounge.webp");background-position:55% 45%}
+@media(max-width:640px){.release .img-release-banner{background-image:url("assets/background/abundance-lounge-mobile.webp");background-position:center}}
 .release-wash{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,17,19,.85),rgba(16,21,23,.52) 55%,rgba(13,17,19,.56)),linear-gradient(0deg,rgba(12,16,18,.9),transparent 60%,rgba(12,16,18,.45))}
 .release .wrap{position:relative;z-index:1}
 .release-heading{margin-bottom:clamp(32px,4vw,48px);max-width:780px}
@@ -284,8 +283,9 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Version benchmarks ---------- */
 .benchmarks{position:relative;isolation:isolate;overflow:hidden;padding:clamp(72px,8vw,112px) 0;background:#161e1b}
-.benchmarks > .bg .ph{background-image:url("assets/background/Benchmarks_Section.png");background-position:50% 45%;filter:saturate(.38) brightness(.82);transition:filter .65s ease}
-.benchmarks.is-v2 > .bg .ph{filter:saturate(1.7) brightness(1.12) contrast(1.04)}
+.benchmarks > .bg .ph{background-image:url("assets/background/central-boulevard.webp");background-position:50% 45%;filter:sepia(.6) saturate(.62) brightness(.88);transition:filter .65s ease}
+.benchmarks.is-v2 > .bg .ph{filter:sepia(0) saturate(1.24) brightness(1.06)}
+@media(max-width:640px){.benchmarks > .bg .ph{background-image:url("assets/background/central-boulevard-mobile.webp");background-position:center}}
 .benchmark-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,16,.88),rgba(12,20,18,.62) 55%,rgba(12,20,18,.68)),linear-gradient(0deg,rgba(10,17,15,.86),transparent 60%,rgba(10,17,15,.35));transition:opacity .65s ease}
 .benchmarks.is-v2 .benchmark-shade{opacity:.84}
 .benchmarks .wrap{position:relative;z-index:1}
@@ -335,8 +335,8 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Home version diagnostic ---------- */
 .version-diagnostic{position:relative;isolation:isolate;overflow:hidden;padding:clamp(72px,8vw,112px) 0;background:#171d1c}
-.version-diagnostic .img-version-banner{background-image:url("assets/background/version_section_desktop_banner.png");background-position:55% 50%}
-@media(max-width:640px){.version-diagnostic .img-version-banner{background-image:url("assets/background/version_section_mobile_banner.png");background-position:50% 50%}}
+.version-diagnostic .img-version-banner{background-image:url("assets/background/questionnaire-clubhouse.webp");background-position:55% 50%}
+@media(max-width:640px){.version-diagnostic .img-version-banner{background-image:url("assets/background/questionnaire-clubhouse-mobile.webp");background-position:center}}
 .version-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,18,19,.91),rgba(18,24,24,.67) 55%,rgba(18,24,24,.6)),linear-gradient(0deg,rgba(12,18,19,.84),transparent 65%)}
 .version-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(40px,6vw,88px);align-items:center}
 .version-diagnostic .eyebrow{color:#dfc9a8;letter-spacing:.23em}
@@ -613,8 +613,8 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Household carbon calculator ---------- */
 .carbon-calculator{position:relative;isolation:isolate;overflow:hidden;padding:clamp(72px,8vw,112px) 0;background:#14221d;--cc-energy:#e2bd7d;--cc-water:#99c7d5;--cc-move:#a9ccb7;--cc-cook:#c6aaa0;--cc-nature:#c8dda2}
-.carbon-calculator > .bg .ph{background-image:url("assets/background/carbon_calculator_banner.jpeg");background-position:50% 50%;filter:saturate(.5) brightness(.65)}
-@media(max-width:640px){.carbon-calculator > .bg .ph{background-image:url("assets/background/carbon_calculator_mobile_banner.jpeg")}}
+.carbon-calculator > .bg .ph{background-image:url("assets/background/carbon-solar-terraces.webp");background-position:50% 24%;filter:brightness(.92)}
+@media(max-width:640px){.carbon-calculator > .bg .ph{background-image:url("assets/background/carbon-solar-terraces-mobile.webp");background-position:center top}}
 .cc-shade{position:absolute;inset:0;background:linear-gradient(120deg,rgba(12,26,21,.9),rgba(17,31,24,.68) 55%,rgba(12,23,20,.92))}
 .cc-heading{position:relative;display:grid;grid-template-columns:1fr;align-items:end;gap:48px;margin-bottom:36px}
 .cc-heading .eyebrow{color:#dfc9a8;margin-bottom:18px}
@@ -677,8 +677,8 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Residence model lineup ---------- */
 .lineup-section{position:relative;isolation:isolate;overflow:hidden;padding:clamp(72px,8vw,112px) 0;background:#1a211f}
-.lineup-section > .bg .ph{background-image:url("assets/background/lineup_desktop_banner.png");background-position:55% 50%}
-@media(max-width:640px){.lineup-section > .bg .ph{background-image:url("assets/background/lineup_mobile_banner.png");background-position:50% 50%}}
+.lineup-section > .bg .ph{background-image:url("assets/background/configuration-villas.webp");background-position:55% 50%}
+@media(max-width:640px){.lineup-section > .bg .ph{background-image:url("assets/background/configuration-villas-mobile.webp");background-position:center}}
 .lineup-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,20,17,.9),rgba(17,24,21,.6) 55%,rgba(17,24,21,.72)),linear-gradient(0deg,rgba(12,20,17,.88),transparent 70%,rgba(12,20,17,.3))}
 .lineup-section .wrap{position:relative;z-index:1}
 .lineup-heading{max-width:720px;margin-bottom:clamp(36px,4vw,52px)}
@@ -764,7 +764,6 @@ html[data-scene="4"] .vstage .vframe[data-i="4"]{opacity:1}
 
 footer{position:relative;background:var(--night);color:var(--on-dark-soft);padding:36px 0;font-size:13px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
-footer .logo-art{width:clamp(140px,12vw,170px)}
 footer .ei-recognition{flex-basis:100%;min-width:0;margin:0 0 8px;padding:0 0 24px;border-top:0;border-bottom:1px solid rgba(228,239,214,.16)}
 
 /* ---------- Overlays (modal, menu, viewer) ---------- */
@@ -836,12 +835,6 @@ footer .ei-recognition{flex-basis:100%;min-width:0;margin:0 0 8px;padding:0 0 24
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <!-- Map black to white while preserving the logo's original #a5dfeb blue and alpha. -->
-    <filter id="logo-white-lettering" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feColorMatrix type="matrix" values="1 0 -1.085106383 0 1  0 1 -1.085106383 0 1  0 0 -0.085106383 0 1  0 0 0 1 0"/>
-    </filter>
-  </defs>
   <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7V20a.8.8 0 0 1-.8.8h-4.9v-6h-5.6v6H4.3a.8.8 0 0 1-.8-.8z"/></symbol>
   <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-.5 9.5-6 14.5-14 14"/><path d="M5 19 13 11"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
@@ -882,8 +875,8 @@ footer .ei-recognition{flex-basis:100%;min-width:0;margin:0 0 8px;padding:0 0 24
   <div class="abundance-scrim abundance-scrim--front" aria-hidden="true"></div>
 
   <div class="topbar">
-    <a class="abundance-wordmark" href="#home" aria-label="Urbanrise home">
-      <img src="assets/hero/urbanrise-wordmark.webp" alt="" width="384" height="70">
+    <a class="abundance-wordmark" href="#home" aria-label="Urbanrise The Lifescape home">
+      <img src="assets/lifescape-logo.webp" alt="" width="640" height="172">
     </a>
     <nav class="navpill lg" aria-label="Primary" data-lg='{"scale":22,"blur":6,"tint":0.08,"tintColor":"--glass-champagne"}'>
       <span class="navthumb lg" aria-hidden="true" data-lg='{"scale":26,"depth":16,"blur":0,"tint":0.12,"tintColor":"--glass-champagne","chroma":0.18,"edge":0.95}'></span>
@@ -1556,7 +1549,7 @@ footer .ei-recognition{flex-basis:100%;min-width:0;margin:0 0 8px;padding:0 0 24
       </ul>
       <p class="ei-cities"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>Bengaluru &middot; Hyderabad &middot; Chennai</p>
     </div>
-    <span class="logo"><span class="logo-art"><img src="assets/logo-02.png" alt="Urbanrise, The Living Wave, Home 2.0" width="2363" height="2363"></span></span>
+    <span class="logo"><img src="assets/lifescape-logo.webp" alt="Urbanrise The Lifescape" width="640" height="172" loading="lazy"></span>
     <span>Home 2.0 · © 2026 UrbanRise</span>
     <button class="link" data-open="join" style="color:var(--on-dark)">Join Early Access<svg class="ico" style="width:16px;height:16px"><use href="#i-arrow"/></svg></button>
   </div>

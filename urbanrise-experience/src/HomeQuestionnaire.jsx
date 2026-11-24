@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
-import desktopScene from '../../assets/background/version_section_desktop_banner.png';
-import mobileScene from '../../assets/background/version_section_mobile_banner.png';
+import desktopScene from '../../assets/background/questionnaire-clubhouse.webp';
+import compactDesktopScene from '../../assets/background/questionnaire-clubhouse-1440.webp';
+import mobileScene from '../../assets/background/questionnaire-clubhouse-mobile.webp';
+import compactMobileScene from '../../assets/background/questionnaire-clubhouse-mobile-540.webp';
 import { features } from './abundance-features.js';
 import { ChapterTitle, useChapterMotion } from './ChapterMotion.jsx';
 import SectionScenery from './SectionScenery.jsx';
@@ -100,7 +102,8 @@ export default function HomeQuestionnaire() {
 
   return (
     <section ref={section} className="followup-section home-questionnaire" id="version" aria-labelledby="versionTitle" data-motion-chapter>
-      <SectionScenery desktop={desktopScene} mobile={mobileScene} chapterEffect="dissolve" />
+      <SectionScenery desktop={desktopScene} mobile={mobileScene} compactDesktop={compactDesktopScene}
+        compactMobile={compactMobileScene} chapterEffect="dissolve" />
       <div className="followup-wrap followup-split">
         <div className="followup-story" data-chapter-heading>
           <p className="followup-kicker" data-chapter-intro>Home check · About 90 seconds</p>

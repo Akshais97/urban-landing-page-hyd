@@ -7,21 +7,28 @@
   overflow: clip;
   min-height: 100svh;
   padding-block: clamp(64px, 8vw, 112px);
-  background: #181b1c;
+  background: #382d21;
   color: var(--release-ink);
   font: 400 16px/1.55 var(--font-body);
 }
 
 .release strong { font-weight: inherit; }
 
-.release-scene {
+.release-scene,
+.release-scene img,
+.release-scene::after {
   position: absolute;
-  z-index: -1;
   inset: 0;
+  pointer-events: none;
+}
+
+.release-scene { z-index: -1; }
+.release-scene img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 45%; }
+.release-scene::after {
+  content: '';
   background:
-    linear-gradient(90deg, rgb(13 17 19 / 85%), rgb(16 21 23 / 52%) 55%, rgb(13 17 19 / 56%)),
-    linear-gradient(0deg, rgb(12 16 18 / 90%), transparent 60%, rgb(12 16 18 / 45%)),
-    url('../../assets/background/release-section-background-updated.png') 55% 45% / cover;
+    linear-gradient(90deg, rgb(33 25 18 / 74%), rgb(45 33 23 / 40%) 55%, rgb(45 33 23 / 22%)),
+    linear-gradient(0deg, rgb(27 22 17 / 79%), transparent 65%, rgb(31 24 18 / 20%));
 }
 
 .release-wrap {
@@ -240,10 +247,9 @@
 }
 
 @media (max-width: 640px) {
-  .release-scene {
-    background:
-      linear-gradient(180deg, rgb(13 17 19 / 76%), rgb(16 21 23 / 58%) 50%, rgb(12 16 18 / 88%)),
-      url('../../assets/background/release-section-background-updated_mobile_banner.png') center / cover;
+  .release-scene img { object-position: center; }
+  .release-scene::after {
+    background: linear-gradient(180deg, rgb(34 26 19 / 66%), rgb(44 34 25 / 35%) 48%, rgb(29 22 17 / 78%));
   }
 }
 
