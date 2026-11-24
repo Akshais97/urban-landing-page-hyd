@@ -37,6 +37,7 @@ function CarbonRange({ field, value, onChange, children }) {
       <label htmlFor={id}>{label}</label>
       <span className="carbon-field-value" aria-hidden="true">{displayValue}</span>
       <input id={id} type="range" min={min} max={max} step={step} value={value}
+        style={{ '--carbon-range-fill': `${(value - min) / (max - min) * 100}%` }}
         aria-valuetext={displayValue} aria-describedby={hint ? `${id}-hint` : undefined}
         onChange={event => onChange(key, event.target.valueAsNumber)} />
       {hint && <p id={`${id}-hint`} className="carbon-hint">{hint}</p>}
@@ -47,7 +48,7 @@ function CarbonRange({ field, value, onChange, children }) {
 
 function CarbonInputs({ household, onChange }) {
   return (
-    <section className="carbon-panel" aria-labelledby="carbon-inputs-title" data-chapter-surface data-chapter-group="flow">
+    <section className="carbon-panel" aria-labelledby="carbon-inputs-title" data-chapter-surface data-chapter-group="flow" data-chapter-glass="panel">
       <h3 id="carbon-inputs-title">How you live today</h3>
       <p className="carbon-panel-copy">Adjust the values to match your household.</p>
       {fields.map(field => (
@@ -57,7 +58,7 @@ function CarbonInputs({ household, onChange }) {
               <legend>Car fuel</legend>
               <div>
                 {fuels.map(([id, label]) => (
-                  <label key={id}>
+                  <label key={id} data-chapter-glass="control">
                     <input type="radio" name="carbon-fuel" value={id} checked={household.fuel === id}
                       onChange={() => onChange('fuel', id)} />
                     <span>{label}</span>
@@ -125,7 +126,7 @@ function CarbonResults({ result, people }) {
   }
 
   return (
-    <section className="carbon-panel carbon-results" aria-labelledby="carbon-results-title" data-chapter-surface>
+    <section className="carbon-panel carbon-results" aria-labelledby="carbon-results-title" data-chapter-surface data-chapter-glass="panel">
       <h3 id="carbon-results-title">Your annual carbon picture</h3>
       <p className="carbon-panel-copy">Tonnes of CO₂ per year for your household.</p>
       <div className="carbon-totals" data-chapter-group="stagger">
@@ -133,7 +134,7 @@ function CarbonResults({ result, people }) {
           ['Your home today', todayTotal],
           ['Abundance scenario', abundanceTotal],
         ].map(([label, total], index) => (
-          <div key={label} className="carbon-total" data-projection={index === 1} data-chapter-item>
+          <div key={label} className="carbon-total" data-projection={index === 1} data-chapter-item data-chapter-glass="control">
             <span>{label}</span>
             <strong>{tonnes(total)}<small> t</small></strong>
             <span>{tonnes(total / people)} t per person</span>
@@ -154,8 +155,8 @@ function CarbonResults({ result, people }) {
       <CarbonBreakdown result={result} />
       <p className="carbon-hint carbon-note">Illustrative estimate based on planning assumptions. Actual results depend on household use and final Abundance engineering data.</p>
       <div className="carbon-actions">
-        <a href={`https://wa.me/?text=${encodeURIComponent(report)}`} target="_blank" rel="noopener noreferrer">Share on WhatsApp</a>
-        <button type="button" onClick={copyResult}>Copy result</button>
+        <a href={`https://wa.me/?text=${encodeURIComponent(report)}`} target="_blank" rel="noopener noreferrer" data-chapter-glass="action">Share on WhatsApp</a>
+        <button type="button" onClick={copyResult} data-chapter-glass="control">Copy result</button>
       </div>
       <p className="carbon-hint carbon-feedback" role="status">{copyFeedback?.report === report && copyFeedback.message}</p>
     </section>
@@ -170,12 +171,13 @@ export default function CarbonCalculator() {
   useChapterMotion(section);
 
   return (
-    <section className="carbon-calculator" ref={section} id="carbon-calculator" aria-labelledby="carbon-title" data-motion-chapter>
+    <section className="carbon-calculator" ref={section} id="carbon-calculator" aria-labelledby="carbon-title"
+      data-motion-chapter data-smoked-glass>
       <SectionScenery className="carbon-scenery" desktop={desktopScene} mobile={mobileScene}
         compactDesktop={compactDesktopScene} compactMobile={compactMobileScene} chapterEffect="depth" />
       <div className="chapter-edge" data-chapter-edge aria-hidden="true" />
       <div className="carbon-wrap">
-        <header className="carbon-heading" data-chapter-heading>
+        <header className="carbon-heading photo-intro" data-chapter-heading>
           <p data-chapter-intro>Carbon calculator</p>
           <ChapterTitle id="carbon-title" lines={['Your home has a carbon bill.', 'See what Abundance could cut.']} />
         </header>

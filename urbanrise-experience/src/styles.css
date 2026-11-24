@@ -3,9 +3,10 @@
 @import './hero-shell.css';
 @import '../../assets/hero/hero.css';
 @import './glass.css';
+@import './smoked-glass.css';
 @import '../../assets/closing/closing.css';
 
-html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); background: var(--color-antique-gold-light); }
 body { margin: 0; }
 .ur-finale {
   --ur-closing-gutter: clamp(1.25rem, 4.45vw, 5rem);
@@ -13,6 +14,16 @@ body { margin: 0; }
 }
 .experience-icons { position: absolute; }
 #experience {
+  --paper: var(--color-antique-gold-light);
+  --chapter-beige: #d5b98f;
+  --chapter-top-ombre: linear-gradient(180deg, rgb(66 75 53 / 7%), rgb(53 64 45 / 3%) 45%, transparent);
+  --chapter-ombre-depth: clamp(48px, 9vw, 104px);
+  --photo-glass-fill: rgb(48 39 27 / 53%);
+  --photo-glass-rim: rgb(236 238 221 / 34%);
+  --photo-glass-coat: linear-gradient(165deg, rgb(255 250 234 / 12%), transparent 62%, rgb(201 219 203 / 6%));
+  --photo-glass-highlight: inset 0 1px 1px rgb(255 248 228 / 32%);
+  --photo-glass-shadow: 0 12px 30px rgb(6 13 11 / 20%);
+  --photo-glass-ink-muted: #eee6d8;
   --experience-gallery-paper: var(--color-champagne-paper);
   --experience-panorama-hold: 72svh;
   position: relative;
@@ -22,13 +33,77 @@ body { margin: 0; }
   background: var(--paper);
 }
 
+.photo-intro {
+  width: fit-content;
+  max-width: 100%;
+  color: #f8f4eb;
+}
+
+/* Carry the contrast across the photograph and let it fade into the scene. */
+:is(.release, .home-questionnaire, .residence-configuration, .founding-access, .carbon-calculator) {
+  --chapter-espresso: 30 22 14;
+  --scrim-start-opacity: 59%;
+  --scrim-hold-opacity: 69%;
+  --scrim-angle: 180deg;
+  --scrim-hold-distance: clamp(245px, 26vw, 360px);
+  --scrim-fade-distance: calc(var(--scrim-hold-distance) + 175px);
+  --scrim-mask: linear-gradient(90deg, #000 max(560px, 59%), transparent);
+}
+
+:is(.home-questionnaire, .founding-access) {
+  --scrim-start-opacity: 71%;
+  --scrim-hold-opacity: 68%;
+  --scrim-angle: 90deg;
+  --scrim-hold-distance: 44%;
+  --scrim-fade-distance: 70%;
+  --scrim-mask: linear-gradient(180deg, rgb(0 0 0 / 45%), #000 17% 82%, transparent);
+}
+
+:is(.release-scene, .followup-scenery, .carbon-scenery)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    var(--chapter-top-ombre) top / 100% var(--chapter-ombre-depth) no-repeat,
+    linear-gradient(var(--scrim-angle),
+      rgb(var(--chapter-espresso) / var(--scrim-start-opacity)),
+      rgb(var(--chapter-espresso) / var(--scrim-hold-opacity)) var(--scrim-hold-distance),
+      transparent var(--scrim-fade-distance));
+  mask-image: var(--scrim-mask);
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  :is(.release, .home-questionnaire, .residence-configuration, .founding-access, .carbon-calculator) {
+    --scrim-start-opacity: 59%;
+    --scrim-hold-opacity: 69%;
+    --scrim-angle: 180deg;
+    --scrim-hold-distance: 245px;
+    --scrim-fade-distance: calc(var(--scrim-hold-distance) + 175px);
+    --scrim-mask: none;
+  }
+
+  :is(.home-questionnaire, .founding-access) {
+    --scrim-hold-distance: 375px;
+  }
+}
+
+@media (max-width: 460px) {
+  :is(.release, .residence-configuration, .carbon-calculator) {
+    --scrim-hold-distance: 295px;
+  }
+
+  :is(.home-questionnaire, .founding-access) {
+    --scrim-hold-distance: 455px;
+  }
+}
+
 .experience-living {
   position: relative;
   background: var(--paper);
   color: var(--ink);
   font: 500 14px/1.5 var(--body);
 }
-.experience-living .garden-story { background: #fff; }
 
 .experience-playback {
   position: sticky;
@@ -61,12 +136,12 @@ body { margin: 0; }
   --experience-gallery-paper: #c8a778;
   --experience-gallery-backdrop:
     repeating-linear-gradient(0deg, rgb(98 68 32 / 2%) 0 1px, transparent 1px 4px),
-    linear-gradient(152deg, #faf5ea 0%, #e6d4b7 54%, var(--experience-gallery-paper) 100%);
+    linear-gradient(152deg, #e8d3ad 0%, #dec29a 54%, var(--experience-gallery-paper) 100%);
 }
 
 #experience[data-gallery-theme='champagne-gold'] .experience-gallery {
   --gallery-canvas: var(--experience-gallery-paper);
-  --gallery-surface: #faf5ea;
+  --gallery-surface: #e8d3ad;
   --gallery-heading: #342619;
   --gallery-copy: #423424;
   --gallery-rule: rgb(122 89 48 / 32%);

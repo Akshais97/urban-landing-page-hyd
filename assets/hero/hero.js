@@ -22,6 +22,7 @@
   const { signal } = eventScope;
   let entrance;
   let scrollMotion;
+  let startTimer;
   let firstFrameTimer;
   let stallTimer;
   let frameId;
@@ -98,9 +99,16 @@
       : requestAnimationFrame(sampleNextFrame);
   }
 
+  function releaseVideo() {
+    if (!video.hasAttribute("src")) return;
+    video.removeAttribute("src");
+    video.load();
+  }
+
   async function showStill() {
     if (settled) return;
     settled = true;
+    clearTimeout(startTimer);
     clearTimeout(firstFrameTimer);
     clearTimeout(stallTimer);
     observer?.disconnect();
@@ -114,19 +122,32 @@
     // The last encoded frame is the same plate. Hold it until the image can paint.
     if (await stillReady) {
       root.dataset.heroFilm = "still";
-      video.removeAttribute("src");
-      video.load();
+      releaseVideo();
     }
   }
 
   function beginVideo(source) {
     const attempt = ++sourceAttempt;
-    video.src = source;
-    video.play().catch((error) => {
+    clearTimeout(startTimer);
+    if (video.getAttribute("src") !== source) video.src = source;
+
+    function play() {
       if (settled || attempt !== sourceAttempt) return;
-      if (video.error || error.name === "NotSupportedError") tryFallback();
-      else showStill();
-    });
+      clearTimeout(startTimer);
+      video.removeEventListener("canplaythrough", play);
+      video.play().catch((error) => {
+        if (settled || attempt !== sourceAttempt) return;
+        if (video.error || error.name === "NotSupportedError") tryFallback();
+        else showStill();
+      });
+    }
+
+    if (video.error || video.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) {
+      play();
+    } else {
+      video.addEventListener("canplaythrough", play, { once: true, signal });
+      startTimer = setTimeout(play, 1200);
+    }
   }
 
   function tryFallback() {
@@ -141,10 +162,11 @@
   if (root.dataset.heroFilm !== "opening" || reducedMotion.matches) {
     root.dataset.heroFilm = "still";
     finishEntrance();
+    releaseVideo();
     return;
   }
 
-  playEntrance();
+  if (root.classList.contains("hero-opening")) playEntrance();
   reducedMotion.addEventListener?.("change", () => {
     if (!reducedMotion.matches) return;
     finishEntrance();
@@ -179,7 +201,9 @@
     observer.observe(hero);
   }
 
-  usedFallback = !video.canPlayType('video/webm; codecs="vp9"');
+  const source = video.getAttribute("src") ||
+    (video.canPlayType('video/webm; codecs="vp9"') ? video.dataset.webm : video.dataset.mp4);
+  usedFallback = source === video.dataset.mp4;
   firstFrameTimer = setTimeout(showStill, 4200);
-  beginVideo(usedFallback ? video.dataset.mp4 : video.dataset.webm);
+  beginVideo(source);
 })();

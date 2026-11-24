@@ -1,0 +1,119 @@
+[data-smoked-glass] {
+  --smoked-tint: 36 35 33;
+  --smoked-opacity: 80%;
+  --smoked-blur: 24px;
+  --smoked-saturation: .8;
+  --smoked-refraction: 10;
+  --smoked-edge-depth: 15;
+  --smoked-fresnel: 13%;
+  --smoked-specular: .36;
+  --smoked-reflection: 22%;
+  --smoked-ink: #fffdf8;
+  --smoked-muted: #e7e3dc;
+  --smoked-gold: #f3d6a0;
+  --smoked-rule: rgb(255 249 237 / 18%);
+  --smoked-coat: linear-gradient(155deg, rgb(255 244 226 / 8%), transparent 47%, rgb(16 14 12 / 12%));
+  --photo-glass-ink-muted: var(--smoked-muted);
+}
+
+#experience [data-smoked-glass] [data-chapter-glass] {
+  --glass-fill: rgb(var(--smoked-tint) / var(--smoked-opacity));
+  --glass-coat: var(--smoked-coat);
+  --glass-rim: var(--smoked-rule);
+  --glass-shadow:
+    inset 0 0 0 1px var(--glass-rim),
+    inset 0 1px rgb(255 246 233 / var(--smoked-specular)),
+    inset 0 -1px rgb(243 214 160 / var(--smoked-fresnel)),
+    0 10px 28px rgb(24 18 13 / 18%);
+  border: 0;
+  background: var(--glass-coat), var(--glass-fill);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(var(--smoked-blur)) saturate(var(--smoked-saturation));
+  backdrop-filter: blur(var(--smoked-blur)) saturate(var(--smoked-saturation));
+  color: var(--smoked-control-ink, var(--smoked-ink));
+  text-shadow: none;
+}
+
+#experience [data-smoked-glass] :where([data-chapter-glass='panel']) [data-chapter-glass] {
+  --glass-fill: rgb(255 247 231 / 5%);
+  --glass-coat: linear-gradient(155deg, rgb(255 247 231 / 5%), transparent 70%);
+  --glass-shadow: inset 0 0 0 1px var(--glass-rim), inset 0 1px rgb(255 248 237 / 9%);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+#experience [data-smoked-glass] :is(.release-search, .founding-field, .carbon-fuels label)[data-chapter-glass] {
+  --glass-rim: rgb(231 227 220 / 43%);
+}
+
+#experience [data-smoked-glass] [data-chapter-glass='action'] {
+  --glass-fill: rgb(243 214 160 / 12%);
+  --glass-coat: linear-gradient(145deg, rgb(243 214 160 / 9%), transparent);
+  --glass-rim: rgb(243 214 160 / 52%);
+  --smoked-control-ink: var(--smoked-gold);
+}
+
+#experience [data-smoked-glass] [data-chapter-glass]:is(
+  [aria-pressed='true'], [aria-selected='true'], [data-projection='true'], :has(> input:checked)
+) {
+  --glass-rim: rgb(243 214 160 / 62%);
+  --glass-coat: linear-gradient(145deg, rgb(243 214 160 / 17%), transparent 85%), var(--smoked-coat);
+}
+
+#experience [data-smoked-glass] [data-chapter-glass].experience-glass {
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* Diffuse the scene before the displacement pass to keep the curved edge legible. */
+[data-smoked-glass] .experience-glass > .lqg-lens > .lqg-lens-inner {
+  filter: blur(var(--smoked-blur)) saturate(var(--smoked-saturation));
+}
+
+#experience [data-smoked-glass] .experience-glass > .lqg-glass {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  will-change: auto;
+}
+
+#experience [data-smoked-glass] :is(a, button, label)[data-chapter-glass]:not(:disabled):active {
+  --glass-coat: linear-gradient(145deg, rgb(243 214 160 / 23%), transparent 90%), var(--smoked-coat);
+  --glass-rim: var(--smoked-gold);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #experience [data-smoked-glass] :is(a, button, label)[data-chapter-glass]:not(:disabled):hover {
+    --glass-rim: rgb(243 214 160 / 58%);
+  }
+  [data-smoked-glass] .experience-glass > .lqg-glass::after {
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: radial-gradient(9rem circle at var(--smoked-light-x, 25%) var(--smoked-light-y, 0%),
+      rgb(255 237 205 / var(--smoked-reflection)), transparent);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .18s ease;
+    content: '';
+  }
+  [data-smoked-glass] .experience-glass:hover > .lqg-glass::after { opacity: 1; }
+}
+
+@media (max-width: 767px) {
+  [data-smoked-glass] {
+    --smoked-opacity: 83%;
+    --smoked-blur: 20px;
+  }
+}
+
+@media (forced-colors: active) {
+  #experience [data-smoked-glass] [data-chapter-glass] {
+    background: Canvas;
+    color: CanvasText;
+  }
+  [data-smoked-glass] .experience-glass > :is(.lqg-lens, .lqg-glass) { display: none; }
+}

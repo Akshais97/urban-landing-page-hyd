@@ -127,6 +127,32 @@
   border-radius: 0 0 12px 12px;
 }
 
+#experience [data-chapter-glass]:where(:not([data-smoked-glass] *)) {
+  --glass-fill: rgb(38 38 38 / 64%);
+  --glass-rim: var(--photo-glass-rim);
+  --glass-coat: var(--photo-glass-coat);
+  --glass-shadow: inset 0 0 0 1px var(--glass-rim), var(--photo-glass-highlight), var(--photo-glass-shadow);
+  border: 0;
+  background: var(--glass-coat), var(--glass-fill);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(6px) saturate(1.15);
+  backdrop-filter: blur(6px) saturate(1.15);
+  color: var(--color-paper-white);
+  text-shadow: 0 1px 2px rgb(19 13 8 / 90%);
+}
+
+#experience [data-chapter-glass]:where(:not([data-smoked-glass] *)):is([aria-selected='true'], [aria-pressed='true'], [data-projection='true'], .carbon-fuels label:has(input:checked)) {
+  --glass-fill: rgb(55 48 41 / 67%);
+  --glass-rim: rgb(255 225 167 / 64%);
+}
+
+#experience [data-chapter-glass='action']:where(:not([data-smoked-glass] *)) {
+  --glass-fill: rgb(54 44 35 / 69%);
+  --glass-rim: rgb(255 225 167 / 58%);
+}
+
+#experience .abundance-story-section [data-chapter-glass='action'] { --glass-fill: rgb(106 65 29 / 83%); }
+
 #experience .experience-glass {
   isolation: isolate;
   background: transparent;
@@ -169,6 +195,9 @@
   #experience :is(.preview-playback, .garden-terrace__link, .gallery-arrow, .gallery-view, .gallery-brand, .gallery-grid button):not([aria-disabled='true']):hover {
     --glass-fill: var(--glass-hover-fill);
   }
+  #experience :is(a, button, label)[data-chapter-glass]:where(:not([data-smoked-glass] *)):not(:disabled):hover {
+    --glass-rim: rgb(255 234 195 / 76%);
+  }
 }
 
 @media (forced-colors: active) {
@@ -178,4 +207,6 @@
     outline: 1px solid ButtonText;
     outline-offset: -1px;
   }
+  #experience [data-chapter-glass] { outline: 1px solid CanvasText; }
+  #experience [data-chapter-glass]:focus-visible { outline: 2px solid Highlight; }
 }

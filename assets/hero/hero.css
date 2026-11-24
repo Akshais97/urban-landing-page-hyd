@@ -49,7 +49,7 @@
 [data-hero-film="opening"] .abundance-poster,
 [data-hero-film="playing"] .abundance-poster {
   visibility: visible;
-  background: url("parchment-poster.webp") var(--hero-focal-point) / cover no-repeat;
+  background: url("villa-reveal-poster.webp") var(--hero-focal-point) / cover no-repeat;
 }
 [data-hero-film="playing"] .abundance-film,
 [data-hero-film="playing"] .lqg-lens-inner .abundance-sample[data-frame] {

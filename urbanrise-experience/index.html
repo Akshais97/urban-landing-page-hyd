@@ -17,10 +17,12 @@
       root.classList.add('hero-opening');
       setTimeout(() => {
         if (!root.hasAttribute('data-hero-ready')) {
-          root.dataset.heroFilm = 'still';
           root.classList.remove('hero-opening');
         }
       }, 1800);
+      setTimeout(() => {
+        if (!root.hasAttribute('data-hero-ready')) root.dataset.heroFilm = 'still';
+      }, 4200);
     })();
   </script>
 </head>
@@ -32,7 +34,7 @@
   <header class="hero abundance-hero" data-scene-root aria-labelledby="hero-title">
     <div class="bg abundance-scene" aria-hidden="true">
       <div class="abundance-layer">
-        <img class="abundance-frame abundance-plate" src="%BASE_URL%hero/golden-hour.webp"
+        <img class="abundance-frame abundance-plate" src="%BASE_URL%hero/villa-reveal-still.webp"
           width="1920" height="1080" alt="" fetchpriority="high">
         <div class="abundance-frame abundance-poster"></div>
         <canvas class="abundance-frame abundance-sample" width="480" height="270"></canvas>
@@ -41,8 +43,14 @@
     </div>
     <div class="abundance-film" aria-hidden="true">
       <div class="abundance-layer">
-        <video class="abundance-frame" muted playsinline preload="none" disablepictureinpicture
-          data-webm="%BASE_URL%hero/parchment-reveal.webm" data-mp4="%BASE_URL%hero/parchment-reveal.mp4"></video>
+        <video class="abundance-frame" muted playsinline preload="auto" disablepictureinpicture
+          data-webm="%BASE_URL%hero/villa-reveal.webm" data-mp4="%BASE_URL%hero/villa-reveal.mp4"></video>
+        <script>
+          if (document.documentElement.dataset.heroFilm === 'opening') {
+            const video = document.currentScript.previousElementSibling;
+            video.src = video.canPlayType('video/webm; codecs="vp9"') ? video.dataset.webm : video.dataset.mp4;
+          }
+        </script>
       </div>
     </div>
     <div class="abundance-scrim abundance-scrim--front" aria-hidden="true"></div>

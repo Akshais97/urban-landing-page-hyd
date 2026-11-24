@@ -52,8 +52,8 @@ function QuestionnaireResult({ answers, titleRef, onRetake }) {
       )}
       <p className="questionnaire-upgrade">These six priorities shape the design of Abundance at The Lifescape.</p>
       <div className="followup-actions">
-        <a className="followup-action" href="#access">See early access details</a>
-        <button className="followup-action followup-action--quiet" type="button" onClick={onRetake}>Retake</button>
+        <a className="followup-action" href="#access" data-chapter-glass="action">See early access details</a>
+        <button className="followup-action followup-action--quiet" type="button" onClick={onRetake} data-chapter-glass="control">Retake</button>
       </div>
     </div>
   );
@@ -101,11 +101,12 @@ export default function HomeQuestionnaire() {
   const [category, question, options] = questions[step] ?? [];
 
   return (
-    <section ref={section} className="followup-section home-questionnaire" id="version" aria-labelledby="versionTitle" data-motion-chapter>
+    <section ref={section} className="followup-section home-questionnaire" id="version" aria-labelledby="versionTitle"
+      data-motion-chapter data-smoked-glass>
       <SectionScenery desktop={desktopScene} mobile={mobileScene} compactDesktop={compactDesktopScene}
-        compactMobile={compactMobileScene} chapterEffect="dissolve" />
+        compactMobile={compactMobileScene} />
       <div className="followup-wrap followup-split">
-        <div className="followup-story" data-chapter-heading>
+        <div className="followup-story photo-intro" data-chapter-heading>
           <p className="followup-kicker" data-chapter-intro>Home check · About 90 seconds</p>
           <ChapterTitle id="versionTitle" lines={['How does your', 'home measure up?']} accent={false} />
           <p className="followup-lead" data-chapter-intro>Answer 12 questions about daily life at home, from power cuts to time outdoors. See how your home scores across the six priorities behind Abundance.</p>
@@ -119,7 +120,7 @@ export default function HomeQuestionnaire() {
             ))}
           </ol>
         </div>
-        <div className="followup-panel" data-chapter-surface>
+        <div className="followup-panel" data-chapter-surface data-chapter-glass="panel">
           <div className="followup-toolbar"><strong>Your home today</strong><span>The Lifescape</span></div>
           {finished ? <QuestionnaireResult answers={answers} titleRef={title} onRetake={() => { setAnswers([]); goTo(0); }} /> : (
             <div className="questionnaire-body">
@@ -129,11 +130,13 @@ export default function HomeQuestionnaire() {
                 <h3 ref={title} tabIndex={-1} id="version-question">{question}</h3>
                 <div className="questionnaire-options" role="group" aria-labelledby="version-question">
                   {options.map((option, index) => (
-                    <button type="button" key={option} aria-pressed={(choosing ?? answers[step]) === index} onClick={() => choose(index)}>{option}</button>
+                    <button type="button" key={option} data-chapter-glass="control"
+                      aria-pressed={(choosing ?? answers[step]) === index} onClick={() => choose(index)}>{option}</button>
                   ))}
                 </div>
                 <div className="questionnaire-meta questionnaire-actions">
-                  <button className="followup-action followup-action--quiet" type="button" disabled={step === 0 || choosing !== null} onClick={() => goTo(step - 1)}>Back</button>
+                  <button className="followup-action followup-action--quiet" type="button" data-chapter-glass="control"
+                    disabled={step === 0 || choosing !== null} onClick={() => goTo(step - 1)}>Back</button>
                   <span>Choose an answer to continue</span>
                 </div>
               </div>

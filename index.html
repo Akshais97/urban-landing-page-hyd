@@ -859,7 +859,7 @@ footer .ei-recognition{flex-basis:100%;min-width:0;margin:0 0 8px;padding:0 0 24
 <header class="hero abundance-hero" data-scene-root id="home" aria-labelledby="hero-title">
   <div class="bg abundance-scene" aria-hidden="true">
     <div class="abundance-layer">
-      <img class="abundance-frame abundance-plate" src="assets/hero/golden-hour.webp"
+      <img class="abundance-frame abundance-plate" src="assets/hero/villa-reveal-still.webp"
         width="1920" height="1080" alt="">
       <div class="abundance-frame abundance-poster"></div>
       <canvas class="abundance-frame abundance-sample" width="480" height="270"></canvas>
@@ -868,8 +868,14 @@ footer .ei-recognition{flex-basis:100%;min-width:0;margin:0 0 8px;padding:0 0 24
   </div>
   <div class="abundance-film" aria-hidden="true">
     <div class="abundance-layer">
-      <video class="abundance-frame" muted playsinline preload="none" disablepictureinpicture
-        data-webm="assets/hero/parchment-reveal.webm" data-mp4="assets/hero/parchment-reveal.mp4"></video>
+      <video class="abundance-frame" muted playsinline preload="auto" disablepictureinpicture
+        data-webm="assets/hero/villa-reveal.webm" data-mp4="assets/hero/villa-reveal.mp4"></video>
+      <script>
+        if (document.documentElement.dataset.heroFilm === 'opening') {
+          const video = document.currentScript.previousElementSibling;
+          video.src = video.canPlayType('video/webm; codecs="vp9"') ? video.dataset.webm : video.dataset.mp4;
+        }
+      </script>
     </div>
   </div>
   <div class="abundance-scrim abundance-scrim--front" aria-hidden="true"></div>

@@ -6,7 +6,7 @@ import lineupMobile from '../../assets/background/configuration-villas-mobile.we
 import lineupCompactMobile from '../../assets/background/configuration-villas-mobile-540.webp';
 import accessDesktop from '../../assets/background/early-access-desktop-banner.png';
 import accessMobile from '../../assets/background/early-access-mobile-banner.png';
-import AbundanceFilm from './AbundanceFilm.jsx';
+import AbundanceStory from './AbundanceStory.jsx';
 import { ChapterTitle, useChapterMotion } from './ChapterMotion.jsx';
 import SectionScenery from './SectionScenery.jsx';
 
@@ -21,18 +21,19 @@ function Configuration({ model, onChoose }) {
   useChapterMotion(section);
 
   return (
-    <section ref={section} className="followup-section residence-configuration" id="lineup" aria-labelledby="lineupTitle" data-motion-chapter>
+    <section ref={section} className="followup-section residence-configuration" id="lineup" aria-labelledby="lineupTitle"
+      data-motion-chapter data-smoked-glass>
       <SectionScenery desktop={lineupDesktop} mobile={lineupMobile} compactDesktop={lineupCompactDesktop}
         compactMobile={lineupCompactMobile} chapterEffect="depth" />
       <div className="followup-wrap">
-        <header className="followup-story configuration-heading" data-chapter-heading>
+        <header className="followup-story configuration-heading photo-intro" data-chapter-heading>
           <p className="followup-kicker" data-chapter-intro>Abundance residences</p>
           <ChapterTitle id="lineupTitle" lines={['Find your home', 'at The Lifescape']} />
           <p className="followup-lead" data-chapter-intro>All three layouts share the same Abundance features, including on-site renewable energy, landscaped terraces and clubhouses.</p>
         </header>
         <div className="configuration-grid" role="group" aria-label="Choose a residence layout" data-chapter-group="flow">
           {models.map(({ name, bathrooms, size }) => (
-            <button type="button" key={name} className="followup-panel configuration-model" data-chapter-item
+            <button type="button" key={name} className="followup-panel configuration-model" data-chapter-item data-chapter-glass="panel"
               aria-pressed={model === name} onClick={() => onChoose(name)}>
               <strong>{name}</strong>
               <span className="configuration-spec">{bathrooms}<span>{size}</span></span>
@@ -85,41 +86,47 @@ function EarlyAccess({ model, onModelChange, confirmation, setConfirmation, mode
   }
 
   return (
-    <section ref={section} className="followup-section founding-access" id="access" aria-labelledby="accessTitle">
+    <section ref={section} className="followup-section founding-access" id="access" aria-labelledby="accessTitle" data-smoked-glass>
       <SectionScenery desktop={accessDesktop} mobile={accessMobile} />
       <div className="followup-wrap followup-split">
-        <div className="followup-story">
+        <div className="followup-story photo-intro">
           <p className="followup-kicker">Founding 222 · Early access</p>
           <h2 id="accessTitle">See Abundance<br />before launch</h2>
           <p className="followup-lead">The first release at The Lifescape is limited to 222 homes.</p>
           <ul className="founding-perks">{perks.map(perk => <li key={perk}>{perk}</li>)}</ul>
-          <a className="followup-action followup-action--quiet" href="https://wa.me/918943214897" target="_blank" rel="noopener noreferrer">
+          <a className="followup-action followup-action--quiet" href="https://wa.me/918943214897" target="_blank" rel="noopener noreferrer" data-chapter-glass="control">
             Or chat on WhatsApp <span aria-hidden="true">↗</span>
           </a>
         </div>
-        <div className="followup-panel founding-card">
+        <div className="followup-panel founding-card" data-chapter-glass="panel">
           <div className="followup-toolbar"><strong>Early access preview</strong><span>Founding 222</span></div>
           <form className="founding-form" id="accessForm" hidden={Boolean(confirmation)} noValidate onSubmit={submit}>
             <fieldset>
               <legend>Contact details</legend>
               <label htmlFor="accessName">Your name</label>
-              <input id="accessName" ref={nameField} name="name" autoComplete="name" placeholder="Full name" required
-                aria-invalid={Boolean(errors.name)} aria-describedby="accessNameError" onChange={() => clearError('name')} />
+              <div className="founding-field" data-chapter-glass="control">
+                <input id="accessName" ref={nameField} name="name" autoComplete="name" placeholder="Full name" required
+                  aria-invalid={Boolean(errors.name)} aria-describedby="accessNameError" onChange={() => clearError('name')} />
+              </div>
               <span id="accessNameError" className="founding-error">{errors.name}</span>
               <label htmlFor="accessPhone">Mobile number</label>
-              <input id="accessPhone" ref={phoneField} name="phone" type="tel" inputMode="tel" autoComplete="tel-national" placeholder="10-digit mobile" required
-                aria-invalid={Boolean(errors.phone)} aria-describedby="accessPhoneError" onChange={() => clearError('phone')} />
+              <div className="founding-field" data-chapter-glass="control">
+                <input id="accessPhone" ref={phoneField} name="phone" type="tel" inputMode="tel" autoComplete="tel-national" placeholder="10-digit mobile" required
+                  aria-invalid={Boolean(errors.phone)} aria-describedby="accessPhoneError" onChange={() => clearError('phone')} />
+              </div>
               <span id="accessPhoneError" className="founding-error">{errors.phone}</span>
             </fieldset>
             <fieldset>
               <legend>Residence preferences</legend>
               <label htmlFor="accessModel">Residence layout</label>
-              <select id="accessModel" name="model" ref={modelField} value={model} onChange={event => onModelChange(event.target.value)}>
-                {models.map(({ name, bathrooms }) => <option key={name} value={name}>{name} · {bathrooms}</option>)}
-              </select>
+              <div className="founding-field" data-chapter-glass="control">
+                <select id="accessModel" name="model" ref={modelField} value={model} onChange={event => onModelChange(event.target.value)}>
+                  {models.map(({ name, bathrooms }) => <option key={name} value={name}>{name} · {bathrooms}</option>)}
+                </select>
+              </div>
             </fieldset>
             {(errors.name || errors.phone) && <p className="founding-error" role="alert">Please check the highlighted fields.</p>}
-            <button className="followup-action" type="submit">Preview early access <span aria-hidden="true">↗</span></button>
+            <button className="followup-action" type="submit" data-chapter-glass="action">Preview early access <span aria-hidden="true">↗</span></button>
             <p className="founding-note">Preview form: your details stay on this page.</p>
           </form>
           {confirmation && (
@@ -128,7 +135,7 @@ function EarlyAccess({ model, onModelChange, confirmation, setConfirmation, mode
               <h3 ref={confirmationTitle} tabIndex={-1}>Welcome home, {confirmation.firstName}.</h3>
               <p>You selected the <strong>{confirmation.model}</strong> layout.</p>
               <p className="founding-note">This selection is a local preview.</p>
-              <button className="followup-action followup-action--quiet" type="button" onClick={edit}>Edit my details</button>
+              <button className="followup-action followup-action--quiet" type="button" onClick={edit} data-chapter-glass="control">Edit my details</button>
             </div>
           )}
         </div>
@@ -155,7 +162,7 @@ export default function ResidenceSelection({ children }) {
     <>
       <Configuration model={model} onChoose={choose} />
       {children}
-      <AbundanceFilm />
+      <AbundanceStory />
       <EarlyAccess model={model} onModelChange={setModel} confirmation={confirmation} setConfirmation={setConfirmation}
         modelField={modelField} section={section} />
     </>

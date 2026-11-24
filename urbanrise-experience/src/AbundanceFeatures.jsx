@@ -132,22 +132,22 @@ export default function AbundanceFeatures() {
   }
 
   return (
-    <section className="release" id="release" aria-labelledby="release-title" ref={section}>
+    <section className="release" id="release" aria-labelledby="release-title" ref={section} data-smoked-glass>
       <SectionScenery className="release-scene" desktop={desktopScene} mobile={mobileScene}
         compactDesktop={compactDesktopScene} compactMobile={compactMobileScene} />
       <div className="release-wrap">
-        <header className="release-heading">
+        <header className="release-heading photo-intro">
           <h2 id="release-title">What makes Abundance different</h2>
           <p>Explore the design and sustainability features that shape everyday life at Abundance.</p>
         </header>
-        <div className="release-window">
+        <div className="release-window" data-chapter-glass="panel">
           <div className="release-toolbar">
             <span className="release-app-icon"><Icon path="M4 10.5 12 4l8 6.5v9H4zM10 19.5V14h4v5.5" /></span>
             <div><strong>Abundance</strong><span>Project features</span></div>
           </div>
           <div className="release-layout">
             <div className="release-sidebar">
-              <label className="release-search">
+              <label className="release-search" data-chapter-glass="control">
                 <Icon path="M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0ZM16 16l5 5" />
                 <span className="sr-only">Search Abundance features</span>
                 <input type="search" value={query} placeholder="Search features" autoComplete="off"
@@ -162,7 +162,7 @@ export default function AbundanceFeatures() {
               <div className="release-tabs" role="tablist" id="release-feature-list"
                 aria-label="Abundance features" aria-orientation={compact ? 'horizontal' : 'vertical'}>
                 {visible.map((feature, index) => (
-                  <button className="release-tab" type="button" role="tab" key={feature.id}
+                  <button className="release-tab" type="button" role="tab" key={feature.id} data-chapter-glass="control"
                     id={tabId(feature)} aria-controls={panelId(feature)}
                     aria-selected={activeId === feature.id} tabIndex={activeId === feature.id ? 0 : -1}
                     onClick={() => setActiveId(feature.id)} onKeyDown={event => moveTab(event, index)}>
