@@ -50,7 +50,7 @@ function QuestionnaireResult({ answers, titleRef, onRetake }) {
           <ul>{lowScoringAnswers.map(([, question, options]) => <li key={question}>{question}<span>{options[0]}</span></li>)}</ul>
         </details>
       )}
-      <p className="questionnaire-upgrade">These six priorities shape the design of Abundance at The Lifescape.</p>
+      <p className="questionnaire-upgrade">These six priorities shape the design of Abundance at LifeScape.</p>
       <div className="followup-actions">
         <a className="followup-action" href="#access" data-chapter-glass="action">See early access details</a>
         <button className="followup-action followup-action--quiet" type="button" onClick={onRetake} data-chapter-glass="control">Retake</button>
@@ -121,7 +121,7 @@ export default function HomeQuestionnaire() {
           </ol>
         </div>
         <div className="followup-panel" data-chapter-surface data-chapter-glass="panel">
-          <div className="followup-toolbar"><strong>Your home today</strong><span>The Lifescape</span></div>
+          <div className="followup-toolbar"><strong>Your home today</strong><span>LifeScape</span></div>
           {finished ? <QuestionnaireResult answers={answers} titleRef={title} onRetake={() => { setAnswers([]); goTo(0); }} /> : (
             <div className="questionnaire-body">
               <div className="questionnaire-meta"><span>{category}</span><span>{step + 1} / {questions.length}</span></div>

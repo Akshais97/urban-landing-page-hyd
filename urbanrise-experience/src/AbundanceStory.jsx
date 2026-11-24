@@ -17,7 +17,7 @@ export default function AbundanceStory() {
           <img src={amphitheatre} srcSet={`${compactAmphitheatre} 720w, ${amphitheatre} 1440w`}
             sizes="(max-width: 800px) 92vw, (max-width: 1440px) 50vw, 710px"
             width="1440" height="804" loading="lazy" decoding="async"
-            alt="Landscaped amphitheatre and gathering lawn beside villas at The Lifescape." />
+            alt="Landscaped amphitheatre and gathering lawn beside villas at LifeScape." />
           <span className="abundance-story-play" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M9 5.5 19 12 9 18.5Z" /></svg>
           </span>

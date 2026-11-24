@@ -1,4 +1,4 @@
-# The Living Wave flower sequence
+# LifeScape flower sequence
 
 This standalone preview adapts the first flower-bearing section of ERA Residence. It moves from the concept to the terrace and ends at “Life opens outdoors.” Desktop scroll moves the two panels horizontally. Mobile and reduced motion use a vertical layout.
 

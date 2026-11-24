@@ -24,7 +24,7 @@ function Icon({ path, className }) {
 export default function Benchmarks() {
   const section = useRef(null);
   const [showAbundance, setShowAbundance] = useState(false);
-  const currentHome = showAbundance ? 'Abundance' : 'a typical apartment';
+  const currentHome = showAbundance ? 'Abundance' : 'a typical home';
 
   useChapterMotion(section);
 
@@ -37,7 +37,7 @@ export default function Benchmarks() {
         <header className="benchmark-heading">
           <div className="benchmark-headline" data-chapter-heading>
             <p className="benchmark-kicker" data-chapter-intro>Benchmarks</p>
-            <ChapterTitle id="benchmarks-title" lines={['Flip the switch.', 'See the upgrade.']} />
+            <ChapterTitle id="benchmarks-title" lines={['Compare everyday homes.', 'See the LifeScape difference.']} />
           </div>
           <div className="benchmark-control benchmark-surface" data-chapter-surface>
             <button type="button" className="benchmark-toggle" role="switch"

@@ -121,13 +121,12 @@ img, video { display: block; }
 .garden-terrace__title {
   position: relative;
   z-index: 2;
-  font: 500 clamp(72px, 17vw, 150px)/0.77 var(--display);
+  font: 500 clamp(56px, 15vw, 150px)/0.77 var(--display);
   letter-spacing: -0.068em;
   text-align: right;
 }
 .garden-terrace__title > span { display: block; }
 .garden-terrace__title .garden-reveal { padding: 0.09em 0.08em 0.14em 0.02em; margin-block: -0.05em; }
-.garden-terrace__title > span:nth-child(2) { margin-inline-end: 0.42em; }
 .garden-terrace__image {
   width: min(76vw, 480px);
   aspect-ratio: 3/4;
@@ -187,11 +186,9 @@ img, video { display: block; }
     top: 24%;
     left: 6vw;
     width: 30vw;
-    font-size: min(10.5vw, 180px, 22svh);
+    font-size: min(7vw, 150px, 22svh);
     text-align: left;
   }
-  .garden-terrace__title > span:nth-child(2) { margin-inline: 0.35em 0; }
-  .garden-terrace__title > span:nth-child(3) { margin-inline-start: 0.1em; }
   .garden-terrace__title .garden-reveal { padding-bottom: 0.21em; margin-bottom: -0.12em; }
   .garden-terrace__image {
     position: absolute;

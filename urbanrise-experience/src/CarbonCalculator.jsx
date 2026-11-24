@@ -89,7 +89,7 @@ function CarbonBreakdown({ result }) {
       <summary>Emissions breakdown and assumptions</summary>
       <table>
         <caption>Annual emissions in kg CO₂</caption>
-        <thead><tr><th scope="col">Source</th><th scope="col">Today</th><th scope="col">Abundance</th><th scope="col">Saved</th></tr></thead>
+        <thead><tr><th scope="col">Source</th><th scope="col">Today</th><th scope="col">LifeScape</th><th scope="col">Saved</th></tr></thead>
         <tbody>
           {carbonCategories.map(([id, label]) => (
             <tr key={id}>
@@ -103,7 +103,7 @@ function CarbonBreakdown({ result }) {
         <tfoot><tr><th scope="row">Total</th><td>{kilograms.format(todayTotal)}</td>
           <td>{kilograms.format(abundanceTotal)}</td><td>{kilograms.format(saved)}</td></tr></tfoot>
       </table>
-      <p className="carbon-hint">The Abundance scenario assumes {model.efficiencySaving * 100}% lower electricity demand,
+      <p className="carbon-hint">The LifeScape scenario assumes {model.efficiencySaving * 100}% lower electricity demand,
         {' '}{model.renewableShare * 100}% renewable electricity, {model.waterSaving * 100}% lower water supply emissions,
         and {model.greenCover} kg of annual CO₂ absorption from green cover. The model uses {model.grid} kg CO₂ per grid kWh.</p>
     </details>
@@ -114,7 +114,7 @@ function CarbonResults({ result, people }) {
   const [copyFeedback, setCopyFeedback] = useState(null);
   const { todayTotal, abundanceTotal, saved, reduction } = result;
   const trees = kilograms.format(saved / carbonAssumptions.treeAbsorption);
-  const report = `My household’s estimated footprint is ${tonnes(todayTotal)} t CO₂ a year. The Abundance scenario estimates ${tonnes(abundanceTotal)} t, ${reduction}% less. Indicative estimate based on planning assumptions.`;
+  const report = `My household’s estimated footprint is ${tonnes(todayTotal)} t CO₂ a year. The LifeScape scenario estimates ${tonnes(abundanceTotal)} t, ${reduction}% less. Indicative estimate based on planning assumptions.`;
 
   async function copyResult() {
     try {
@@ -132,7 +132,7 @@ function CarbonResults({ result, people }) {
       <div className="carbon-totals" data-chapter-group="stagger">
         {[
           ['Your home today', todayTotal],
-          ['Abundance scenario', abundanceTotal],
+          ['LifeScape scenario', abundanceTotal],
         ].map(([label, total], index) => (
           <div key={label} className="carbon-total" data-projection={index === 1} data-chapter-item data-chapter-glass="control">
             <span>{label}</span>
@@ -142,10 +142,10 @@ function CarbonResults({ result, people }) {
         ))}
       </div>
       <p className="sr-only" role="status">{report}</p>
-      <p className="carbon-saving"><strong>{reduction}%</strong> estimated reduction with Abundance</p>
+      <p className="carbon-saving"><strong>{reduction}%</strong> estimated reduction at LifeScape</p>
       <div className="carbon-comparison" aria-hidden="true" data-chapter-meter>
         <div><span>Today</span><span className="carbon-bar"><span className="carbon-bar-fill"><i /></span></span></div>
-        <div><span>Abundance</span><span className="carbon-bar"><span className="carbon-bar-fill"><i style={{ transform: `scaleX(${abundanceTotal / todayTotal})` }} /></span></span></div>
+        <div><span>LifeScape</span><span className="carbon-bar"><span className="carbon-bar-fill"><i style={{ transform: `scaleX(${abundanceTotal / todayTotal})` }} /></span></span></div>
       </div>
       <dl className="carbon-equivalents">
         <div><dt>kg CO₂ saved per year</dt><dd>{kilograms.format(saved)}</dd></div>
@@ -153,7 +153,7 @@ function CarbonResults({ result, people }) {
         <div><dt>Tonnes saved over 10 years</dt><dd>{kilograms.format(saved / 100)}</dd></div>
       </dl>
       <CarbonBreakdown result={result} />
-      <p className="carbon-hint carbon-note">Illustrative estimate based on planning assumptions. Actual results depend on household use and final Abundance engineering data.</p>
+      <p className="carbon-hint carbon-note">Illustrative estimate based on planning assumptions. Actual results depend on household use and final LifeScape engineering data.</p>
       <div className="carbon-actions">
         <a href={`https://wa.me/?text=${encodeURIComponent(report)}`} target="_blank" rel="noopener noreferrer" data-chapter-glass="action">Share on WhatsApp</a>
         <button type="button" onClick={copyResult} data-chapter-glass="control">Copy result</button>
@@ -179,7 +179,7 @@ export default function CarbonCalculator() {
       <div className="carbon-wrap">
         <header className="carbon-heading photo-intro" data-chapter-heading>
           <p data-chapter-intro>Carbon calculator</p>
-          <ChapterTitle id="carbon-title" lines={['Your home has a carbon bill.', 'See what Abundance could cut.']} />
+          <ChapterTitle id="carbon-title" lines={['Your home has a carbon bill.', 'See what LifeScape could cut.']} />
         </header>
         <div className="carbon-tool">
           <CarbonInputs household={household} onChange={updateHousehold} />

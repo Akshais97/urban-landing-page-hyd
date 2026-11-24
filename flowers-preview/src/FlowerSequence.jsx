@@ -134,8 +134,8 @@ export default function FlowerSequence({ flowersPaused, homesUrl }) {
       horizontalTrigger.current = horizontal.scrollTrigger;
 
       const scroll = { trigger: section, start: 'top top', end: 'bottom bottom', scrub: 0.25 };
-      gsap.fromTo('[data-garden-title-line]', { xPercent: index => [-5, 25, -15][index] }, {
-        xPercent: index => [5, -25, 25][index],
+      gsap.fromTo('[data-garden-title-line]', { xPercent: -5 }, {
+        xPercent: 5,
         ease: 'none',
         scrollTrigger: scroll,
       });
@@ -176,7 +176,7 @@ export default function FlowerSequence({ flowersPaused, homesUrl }) {
   }
 
   return (
-    <section className="garden-story" ref={sectionRef} data-flower-sequence aria-label="The Living Wave" onFocusCapture={revealFocusedLink}>
+    <section className="garden-story" ref={sectionRef} data-flower-sequence aria-label="LifeScape" onFocusCapture={revealFocusedLink}>
       <div className="garden-story__viewport" ref={viewportRef}>
         <div className="garden-story__track" ref={trackRef} data-garden-track>
           <article className="garden-panel garden-intro" data-garden-intro>
@@ -189,7 +189,7 @@ export default function FlowerSequence({ flowersPaused, homesUrl }) {
                 </Reveal>
               </div>
               <Reveal as="p" className="garden-intro__description" delay={0.20}>
-                The Living Wave brings landscaped terraces, planted walkways and open spaces into everyday life.
+                LifeScape brings landscaped terraces, planted walkways and open spaces into everyday life.
               </Reveal>
             </div>
             <span className="garden-intro__scroll" aria-hidden="true"><i /> Scroll to explore</span>
@@ -199,16 +199,14 @@ export default function FlowerSequence({ flowersPaused, homesUrl }) {
             <Flower id="02" placement="terrace" paused={pause} />
             <span className="garden-terrace__brand garden-kicker">Urbanrise</span>
             <h2 className="garden-terrace__title">
-              {['The', 'Living', 'Wave'].map((line, index) => (
-                <span key={line} data-garden-title-line>
-                  <Reveal delay={0.05 * index} amount={0.2}>{line}</Reveal>
-                </span>
-              ))}
+              <span data-garden-title-line>
+                <Reveal amount={0.2}>LifeScape</Reveal>
+              </span>
             </h2>
             <figure className="garden-terrace__image" ref={terraceRef}>
               <motion.img
                 src={mediaRoot + 'project/garden-terrace.webp'}
-                alt="Planted terraces at The Living Wave"
+                alt="Planted terraces at LifeScape"
                 width="1050"
                 height="1500"
                 initial={reduced ? false : { clipPath: 'inset(0% 0% 0% 100%)' }}

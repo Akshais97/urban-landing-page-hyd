@@ -60,7 +60,7 @@ export const features = [
     description: 'Biophilic design and vertical gardens bring nature into everyday architecture.',
     steps: [
       ['Biophilic design', 'Spaces shaped around light, green and natural materials.'],
-      ['Vertical gardens', 'Planting extends from the ground floor up the building.'],
+      ['Vertical gardens', 'Planting extends from the ground floor to the upper levels.'],
       ['Every day', 'Nature within reach throughout the day.'],
     ],
   },

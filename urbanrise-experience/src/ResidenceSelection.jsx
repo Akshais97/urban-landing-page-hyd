@@ -27,8 +27,8 @@ function Configuration({ model, onChoose }) {
         compactMobile={lineupCompactMobile} chapterEffect="depth" />
       <div className="followup-wrap">
         <header className="followup-story configuration-heading photo-intro" data-chapter-heading>
-          <p className="followup-kicker" data-chapter-intro>Abundance residences</p>
-          <ChapterTitle id="lineupTitle" lines={['Find your home', 'at The Lifescape']} />
+          <p className="followup-kicker" data-chapter-intro>G+2 villas · Gattahalli, Bengaluru</p>
+          <ChapterTitle id="lineupTitle" lines={['Find your villa', 'at LifeScape']} />
           <p className="followup-lead" data-chapter-intro>All three layouts share the same Abundance features, including on-site renewable energy, landscaped terraces and clubhouses.</p>
         </header>
         <div className="configuration-grid" role="group" aria-label="Choose a residence layout" data-chapter-group="flow">
@@ -47,8 +47,8 @@ function Configuration({ model, onChoose }) {
 }
 
 const perks = [
-  'First pick of residence, floor and view',
-  'A private visit to The Lifescape site',
+  'First choice of villa and view',
+  'A private visit to LifeScape',
   'Priority access when homes are released',
 ];
 
@@ -91,8 +91,8 @@ function EarlyAccess({ model, onModelChange, confirmation, setConfirmation, mode
       <div className="followup-wrap followup-split">
         <div className="followup-story photo-intro">
           <p className="followup-kicker">Founding 222 · Early access</p>
-          <h2 id="accessTitle">See Abundance<br />before launch</h2>
-          <p className="followup-lead">The first release at The Lifescape is limited to 222 homes.</p>
+          <h2 id="accessTitle">Feel the Abundance<br />before launch</h2>
+          <p className="followup-lead">The first release at LifeScape is limited to 222 homes.</p>
           <ul className="founding-perks">{perks.map(perk => <li key={perk}>{perk}</li>)}</ul>
           <a className="followup-action followup-action--quiet" href="https://wa.me/918943214897" target="_blank" rel="noopener noreferrer" data-chapter-glass="control">
             Or chat on WhatsApp <span aria-hidden="true">↗</span>

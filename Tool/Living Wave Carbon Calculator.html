@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Living Wave Carbon Calculator</title>
+<title>LifeScape Carbon Calculator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -86,9 +86,9 @@ summary{font-family:var(--display);font-weight:700;font-size:18px;cursor:pointer
 </style>
 
 <div class="wrap">
-  <div class="brand"><span>Urbanrise · The Living Wave · Gattahalli</span><span>Future Home Standard</span></div>
-  <h1>Your home has a carbon bill. <em>See what the future home cuts.</em></h1>
-  <p class="lede">Move the sliders to match how your household lives today. We compare it with the same family living at The Living Wave — solar and wind on site, water recycled, an EV charger in every parking bay.</p>
+  <div class="brand"><span>Urbanrise · LifeScape · Gattahalli</span><span>Carbon calculator</span></div>
+  <h1>Your home has a carbon bill. <em>See what LifeScape could cut.</em></h1>
+  <p class="lede">Move the sliders to match how your household lives today. We compare it with the same family living at LifeScape — solar and wind on site, water recycled, an EV charger in every parking bay.</p>
   <svg id="waveline" viewBox="0 0 1000 56" preserveAspectRatio="none" aria-hidden="true"><path id="wp" fill="none" stroke="var(--wave)" stroke-width="2"/><path id="wp2" fill="none" stroke="var(--sun)" stroke-width="1.2" opacity=".7"/></svg>
 
   <div class="tool">
@@ -122,21 +122,21 @@ summary{font-family:var(--display);font-weight:700;font-size:18px;cursor:pointer
     </section>
 
     <section class="panel result" aria-labelledby="h-out" aria-live="polite">
-      <h2 id="h-out" class="cut">The Living Wave cuts <b id="pct">–</b> of your home's emissions.</h2>
+      <h2 id="h-out" class="cut">An estimated <b id="pct">–</b> reduction at LifeScape.</h2>
       <p class="sub">Tonnes of CO₂ per year, whole household.</p>
       <div class="vs">
         <div class="card today"><div class="k">Your home today</div><div class="v" id="t-today">–</div><div class="u" id="pp-today"></div></div>
-        <div class="card lw"><div class="k">At The Living Wave</div><div class="v" id="t-lw">–</div><div class="u" id="pp-lw"></div></div>
+        <div class="card lw"><div class="k">At LifeScape</div><div class="v" id="t-lw">–</div><div class="u" id="pp-lw"></div></div>
       </div>
 
       <div class="bars">
         <div class="barrow"><span>Today</span><div class="track" id="bar-today"></div></div>
-        <div class="barrow"><span>Living Wave</span><div class="track" id="bar-lw"></div></div>
+        <div class="barrow"><span>LifeScape</span><div class="track" id="bar-lw"></div></div>
       </div>
       <div class="legend" id="legend"></div>
 
       <div style="overflow-x:auto"><table>
-        <thead><tr><th>Pillar</th><th>Today</th><th>Living Wave</th><th>Saved</th></tr></thead>
+        <thead><tr><th>Pillar</th><th>Today</th><th>LifeScape</th><th>Saved</th></tr></thead>
         <tbody id="rows"></tbody>
       </table></div>
 
@@ -150,7 +150,7 @@ summary{font-family:var(--display);font-weight:700;font-size:18px;cursor:pointer
         <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Share on WhatsApp</a>
         <button class="btn ghost" type="button" id="copy">Copy result</button>
       </div>
-      <p class="fine">Indicative estimate. Living Wave figures use planning assumptions you can see and change below; final numbers come from Urbanrise engineering data.</p>
+      <p class="fine">Indicative estimate. LifeScape figures use planning assumptions you can see and change below; final numbers come from Urbanrise engineering data.</p>
     </section>
   </div>
 
@@ -253,7 +253,7 @@ function render(){
   $("e-trees").textContent = fmtN(saved/a.tree);
   $("e-10").textContent = (saved*10/1000).toFixed(0);
 
-  const msg = `My home puts out ${fmtT(r.tToday)} t of CO₂ a year. Living at Urbanrise The Living Wave would cut that by ${pct}% — the same as ${fmtN(saved/a.tree)} trees working for us every year. Why are we still building homes for yesterday?`;
+  const msg = `My household’s estimated footprint is ${fmtT(r.tToday)} t of CO₂ a year. The LifeScape scenario estimates ${fmtT(r.tLw)} t, ${pct}% less, equivalent to ${fmtN(saved/a.tree)} mature trees’ yearly absorption. Indicative estimate based on planning assumptions.`;
   $("wa").href = "https://wa.me/?text="+encodeURIComponent(msg);
   $("copy").dataset.msg = msg;
 }

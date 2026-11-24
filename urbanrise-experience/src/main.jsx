@@ -16,7 +16,7 @@ import './followup-sections.css';
 
 const township = {
   src: import.meta.env.BASE_URL + 'project/golden-hour-villa-township.webp',
-  alt: 'Aerial view of a villa township with landscaped gardens and tree-lined roads.',
+  alt: 'Aerial view of G+2 villas with landscaped gardens and tree-lined roads.',
   width: 1672,
   height: 941,
 };
@@ -26,7 +26,7 @@ function LivingWave({ section }) {
   const reduced = useReducedMotion();
 
   useEffect(() => {
-    // Start fetching the closing image near The Living Wave's entrance.
+    // Start fetching the closing image near LifeScape's entrance.
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
       const image = new Image();
